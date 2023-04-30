@@ -4,6 +4,14 @@
 # 开片
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6da52ff6e6ae4f1a9b2f026dc893c21a.png)
+# 1
+![在这里插入图片描述](\tupian\001.png)
+# 2
+![在这里插入图片描述](\tupian\001.svg)
+# 3
+![在这里插入图片描述](/tupian/001.png)
+# 4
+![在这里插入图片描述](/tupian/001.svg)
 
 <p><ruby>
    【宮水　三葉】：<rp>(</rp><rt></rt><rp>)</rp>
