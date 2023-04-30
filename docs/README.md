@@ -8,4 +8,4 @@ GitHub Pages 完整阅读：[进入](https://sakura-jikage.github.io/notebook/)
 
 * 日语2
     * 动漫学日语
-    * [你的名字](/riyu/dongman/nidemingzi.md)
+        * [你的名字](/riyu/dongman/nidemingzi.md)
