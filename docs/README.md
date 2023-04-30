@@ -5,3 +5,7 @@
 GitHub Pages 完整阅读：[进入](https://sakura-jikage.github.io/notebook/)
 
 ### <a href="#/menu?id=目录">开始阅读</a></p></div><div class="mask"></div></section>
+
+* 日语2
+    * 动漫学日语
+    * [你的名字](/riyu/dongman/nidemingzi.md)
