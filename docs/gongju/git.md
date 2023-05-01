@@ -26,7 +26,7 @@ git clone命令如下：
 git clone https://github.com/Sakura-JiKage/notebook.git
 ```
 
-# 第三步 github更新到本地
+# github更新到本地
 
 因为我的github只有我自己使用，所以如果**github内容变更**后，与本地不一致了，此时我回把**本地内容删除，重新执行第二步**，保持本地和github一致后，再修改本地内容。
 
