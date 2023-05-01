@@ -1,10 +1,10 @@
-# 第一步 安装git工具
+# 安装git工具
 
 [下载地址 https://github.com/git-for-windows/git/releases/download/v2.40.1.windows.1/Git-2.40.1-64-bit.exe](https://github.com/git-for-windows/git/releases/download/v2.40.1.windows.1/Git-2.40.1-64-bit.exe)
 
 安装时一直下一步即可
 
-# 第二步 github取得到本地
+# github取得到本地
 
 1 本地硬盘新建文件夹
 
@@ -32,7 +32,7 @@ git clone https://github.com/Sakura-JiKage/notebook.git
 
 
 
-# 第四步 提交本地内容到github
+# 提交本地内容到github
 
 与svn不同的是，github的提交是提交到本地git库，而上传到github是提交后，执行推送（push）。
 
