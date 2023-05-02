@@ -18,7 +18,7 @@ internet 注意 i 小写，凡是能彼此通信的设备组成的网络就叫�
 
 Internet 注意 I 大写，是网络与网络之间所串连成的庞大网络，这些网络以一组标准的网络TCP/IP协议族相连，下图展示的是TCP/IP协议族：
 
-![](\md_images\TCP IP协议族.jpg)
+![](/md_images/TCP IP协议族.jpg)
 
 ### 1.1.4、万维网
 
@@ -64,7 +64,7 @@ HTTP默认端口号是90，但是你也可以改为8080活着其他端口。
 
 ## 2.2、图解HTTP协议通信流程
 
-![](\md_images\图解HTTP协议通信流程.gif)
+![](/md_images/图解HTTP协议通信流程.gif)
 
 ## 2.3、关于CGI
 本章节“关于CGI”搬运自《简单说明CGI和动态请求是什么》：https://www.cnblogs.com/f-ck-need-u/p/7627035.html
@@ -77,7 +77,7 @@ CGI是common gateway interface的缩写，大家都译作通用网关接口，�
 
 简单版的cgi工作方式如下：
 
-![](\md_images\简单版的cgi工作方式.jpg)
+![](/md_images/简单版的cgi工作方式.jpg)
 
 例如，在谷歌搜索栏中搜索一个关键词"http"，对应的URL为：
 
@@ -108,11 +108,11 @@ CGI是common gateway interface的缩写，大家都译作通用网关接口，�
 
 以php-fpm为例，web server从转发动态请求到结束的过程大致如下：
 
-![](\md_images\web server从转发动态请求到结束的过程.jpg)
+![](/md_images/web server从转发动态请求到结束的过程.jpg)
 
 而每个php-cgi进程的作用大致包括：(有些功能分类错误，请无视，知道大致功能就够了)
 
-![](\md_images\每个php-cgi进程的作用.jpg)
+![](/md_images/每个php-cgi进程的作用.jpg)
 
 注意，尽管php-fpm的全称为PHP FastCGI Process Manager，但严格地讲，php-fpm不是fastcgi的进程管理器，而是php fastcgi即php-cgi的进程管理器。fastcgi只是一种协议，不是进程。就像http协议一样，apache对它的实现是httpd，nginx对它的实现就叫nginx。
 
@@ -464,11 +464,11 @@ HTTP/2 允许服务器未经请求，主动向客户端发送资源，这叫做�
 
 普通的客户端请求过程：
 
-![](\md_images\HTTP协议 普通的客户端请求过程.jpg)
+![](/md_images/HTTP协议 普通的客户端请求过程.jpg)
 
 服务端推送的过程：
 
-![](\md_images\HTTP协议 服务端推送的过程.jpg)
+![](/md_images/HTTP协议 服务端推送的过程.jpg)
 
 HTTP 性能优化的关键并不在于高带宽，而是低延迟。TCP 连接会随着时间进行自我「调谐」，起初会限制连接的最大速度，如果数据成功传输，会随着时间的推移提高传输的速度。这种调谐则被称为 TCP 慢启动(拥塞控制)。由于这种原因，让原本就具有突发性和短时性的 HTTP 连接变的十分低效。
 HTTP/2 通过让所有数据流共用同一个连接，可以更有效地使用 TCP 连接，让高带宽也能真正的服务于 HTTP 的性能提升。
@@ -537,6 +537,6 @@ CONNECT 方法在一般的开发中使用不到，这个方法的作用就是把
 ## 8、TRACE
 TRACE 请求会在目的服务器端发起一个环回诊断。行程最后一站的服务器会弹回一条 TRACE 响应，并在响应主体中携带它收到的原始请求报文。这样客户端就可以查看在所有中间 HTTP 应用程序组成的请求 / 响应链上，原始报文是否，以及如何被毁坏或修改过。TRACE 方法主要用于**测试或诊断**，验证请求是否如愿穿过了请求 / 响应链。
 
-![](\md_images\TRACE 请求图解.jpg)
+![](/md_images/TRACE 请求图解.jpg)
 
 以上就是八种 HTTP 请求方式的简单介绍了，除了这基本的八种，还有特定服务器的扩展自定义方法，比如开头提到的 PATCH。平时如果只是满足简单的开发需要，GET 和 POST 就足够了， 但是如果能够掌握和应用这些请求方式，自然能够更上一层楼！
