@@ -20,5 +20,5 @@
     * [HTTP](/http/HTTP知识.md)
 * Oracle
     * [Oracle常用语法](/oracle/Oracle.md)
-    * [Oracle OCP](/oracle/Oracle OCP.md)
+    * [Oracle OCP](/oracle/Oracle_OCP.md)
     * [Oracle 概念文档](/oracle/Oracle数据库概念文档_中文版.md)
