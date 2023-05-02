@@ -1,0 +1,137 @@
+* {
+	padding: 0;
+	margin: 0;
+	/*盒子模型*/
+	box-sizing: border-box;
+}
+body {
+	/* 居中对齐弹性盒的各项 <div> 元素： */
+	display: flex;
+	/*center元素位于容器的中心。*/
+	/*弹性盒子元素在该行的侧轴（纵轴）上居中放置。*/
+	/*（如果该行的尺寸小于弹性盒子元素的尺寸，*/
+	/*则会向两个方向溢出相同的长度）。*/
+	align-items: center;
+	justify-content: center;
+	/*vh就是当前屏幕可见高度的1%*/
+	/*height:100vh，该元素会被撑开屏幕高度一致。*/
+	height: 100vh;
+	background-color: #282c34;
+}
+
+.tab {
+	width: 700px;
+	height: 250px;
+	color: #607291;
+	background-color: #fff;
+	overflow: hidden;
+}
+
+input {
+	/*隐藏单选按钮*/
+	display: none;
+}
+
+/* tab页样式 */
+label {
+	float: left;
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 700;
+	transition: all 0.3s;
+	background-color: #e5e9ea;
+}
+
+/* tab页选中状态 */
+label:hover {
+	background-color: #fff;
+}
+
+/* tab页里的图片样式 */
+label img {
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin-top: -5px;
+	margin-right: 5px;
+}
+
+ul {
+	clear: both;
+	width: 3500px;
+	height: 210px;
+	/* 进场动画 */
+	transition: all 0.5s;
+}
+
+ul li {
+	float: left;
+	list-style: none;
+	width: 700px;
+	height: 210px;
+	padding: 40px;
+}
+
+/* tab页内容的图片 */
+ul li img {
+	float: left;
+	width: 130px;
+	height: 130px;
+	margin-right: 20px;
+}
+
+ul li p {
+	text-indent: 2em;
+	/* 伸缩盒子模型 */
+	/* 把tab页里的图片下面的文字移到右侧 */
+	display: -webkit-box;
+	/* 在伸缩盒子里让子元素垂直排列 */
+	-webkit-box-orient: vertical;
+	/* 非css标准，只显示三行 */
+	-webkit-line-clamp: 3;
+	/* 三行以外溢出文字 隐藏 */
+	overflow: hidden;
+	/* 溢出文字 以省略号表示 */
+	text-overflow: ellipsis;
+	margin-top: 20px;
+}
+
+#tab1:checked ~ ul {
+	margin-left: 0px;
+}
+
+#tab2:checked ~ ul {
+	margin-left: -700px;
+}
+
+#tab3:checked ~ ul {
+	margin-left: -1400px;
+}
+
+#tab4:checked ~ ul {
+	margin-left: -2100px;
+}
+
+#tab5:checked ~ ul {
+	margin-left: -2800px;
+}
+
+/* tab页选中后 背景变白色 */
+#tabl:checked ~ label[for='tab1'] {
+	background-color: #fff;
+}
+#tab2:checked ~ label[for='tab2'] {
+	background-color: #fff;
+}
+#tab3:checked ~ label[for='tab3'] {
+	background-color: #fff;
+}
+#tab4:checked ~ label[for='tab4'] {
+	background-color: #fff;
+}
+#tab5:checked ~ label[for='tab5'] {
+	background-color: #fff;
+}
