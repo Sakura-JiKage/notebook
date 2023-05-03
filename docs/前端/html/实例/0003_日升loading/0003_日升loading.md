@@ -1,4 +1,6 @@
-# 0003_日升loading
+[参照的网址：https://www.bilibili.com/video/BV1nZ4y1r7yR](https://www.bilibili.com/video/BV1nZ4y1r7yR)
+
+[参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
 
 [演示页面](https://sakura-jikage.github.io/notebook/前端/html/实例/0003_日升loading_[HTML_CSS]/index.html)
 
@@ -12,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    <title>Document</title>
+    <title>0003_日升loading</title>
 </head>
 <body>
     <div class="container">
