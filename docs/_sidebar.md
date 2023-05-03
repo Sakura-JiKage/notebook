@@ -21,8 +21,8 @@
     * HTML
         * 实例
             * [0001_Tab选项卡](/前端/html/实例/0001_Tab选项卡_[HTML_CSS]/0001_Tab选项卡.md)
-            * [0002_幽灵漂浮](/前端/html/实例/0002_幽灵漂浮_[HTML_CSS]/index.html)
-            * [0003_日升loading](/前端/html/实例/0003_日升loading_[HTML_CSS]/index.html)
+            * [0002_幽灵漂浮](/前端/html/实例/0002_幽灵漂浮_[HTML_CSS]/0001_Tab选项卡_[HTML_CSS].md)
+            * [0003_日升loading](/前端/html/实例/0003_日升loading_[HTML_CSS]/0003_日升loading_[HTML_CSS].md)
 * Oracle
     * [Oracle常用语法](/oracle/Oracle.md)
     * [Oracle OCP](/oracle/Oracle_OCP.md)
