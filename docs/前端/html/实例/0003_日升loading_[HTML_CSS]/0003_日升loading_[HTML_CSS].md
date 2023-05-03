@@ -1,4 +1,4 @@
-# 0002_幽灵漂浮
+# 0003_日升loading
 
 [演示页面](https://sakura-jikage.github.io/notebook/前端/html/实例/0003_日升loading_[HTML_CSS]/index.html)
 
