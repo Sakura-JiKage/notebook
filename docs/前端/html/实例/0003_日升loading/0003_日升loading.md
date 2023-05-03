@@ -2,7 +2,7 @@
 
 [参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
 
-[演示页面](https://sakura-jikage.github.io/notebook/前端/html/实例/0003_日升loading_[HTML_CSS]/index.html)
+[演示页面](https://sakura-jikage.github.io/notebook/前端/html/实例/0003_日升loading/index.html)
 
 **index.html**
 
