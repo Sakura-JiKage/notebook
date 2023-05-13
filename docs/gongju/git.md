@@ -12,15 +12,15 @@
 
 2 右键选择git bash
 
-![](/tupian/git/001.png)
+![](tupian/git/001.png)
 
 显示下面图片的界面
 
-![](/tupian/git/002.png)
+![](tupian/git/002.png)
 
 找到下面图片中的链接，复制后，再执行git clone 命令
 
-![](/tupian/git/003.png)
+![](tupian/git/003.png)
 
 git clone命令如下：
 
