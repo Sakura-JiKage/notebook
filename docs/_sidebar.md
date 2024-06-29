@@ -15,7 +15,8 @@
         * [日本语实用例句](/日语/语法/日本语实用例句.md)
         * [日语单词](/日语/语法/日语单词.md)
 * 工具
-    * [git](/gongju/git.md)
+    * [1 git使用手顺](/tools/1.md)
+    * [2 svg转base64代码手顺](/tools/2.md)
 * 前端
     * [HTTP](/http/HTTP知识.md)
     * HTML
