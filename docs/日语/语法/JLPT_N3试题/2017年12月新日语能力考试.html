@@ -60,11 +60,12 @@
         </div>
         <div class="row">
             <div class="col">
-                <h3>問題１_のことばの読み方として最もよいものを、１・２・３・４から一つえらびなさい。</h3>
+                <h3>問題１_のことばの読み方として最もよいものを、１・２・３・４から一つえらびなさい。<button
+                    class="btn btn-primary btn-sm" onclick="showans_q(1,1,8)" id="button_q_1_ans">查看问题1全部答案</button></h3>
             </div>
         </div>
         <div class="row">
-            <div class="col"> (1)中村部長と<span style="text-decoration: underline;">直接</span>話した&emsp;&emsp;<button
+            <div class="col"> (1)中村部長と<span style="text-decoration: underline;">直接</span>話した。&emsp;&emsp;<button
                     class="btn btn-primary btn-sm" onclick="showans('1_1')" id="button_1_1_ans">查看答案</button></div>
         </div>
         <div class="row">
@@ -78,30 +79,60 @@
             <span>(1)3 句意：直接和中村部长进行了对话。</span>
             <span>考察汉字词，“直”音读为“ちょく・じき”，“接”音读为“せつ”。</span>
         </div>
+        <div class="row">
+            <div class="col"> (2)これはすぐには<span style="text-decoration: underline;">燃えません</span>。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_2')" id="button_1_2_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_2" value="1"><span>1.にえません</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_2" value="2"><span>2.ひえません</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_2" value="3"><span>3.きえません</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_2" value="4"><span id="span_1_2_ans">4.もえません</span></input></div>
+        </div>
+        <div class="row" id="div_1_2_ans" style="display:none">
+            <span>(2)4 句意：这个不会马上就燃烧起来。</span>
+            <span>1.煮える（にえる）：煮，煮熟。</span>
+            <span>2.冷える（ひえる）：变冷，放凉。</span>
+            <span>3.消える（きえる）：消失。</span>
+            <span>4.燃える（もえる）：燃烧。</span>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>問題2_のことばを漢字で書くとものき、最もよいを、１・２・３・４から一つえらびなさい。<button
+                    class="btn btn-primary btn-sm" onclick="showans_q(2,9,14)" id="button_q_2_ans">查看问题2全部答案</button></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (9)次の目標は1<span style="text-decoration: underline;">びょう</span>でう。。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_9')" id="button_1_9_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_9" value="1"><span>1.培</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_9" value="2"><span>2.抄</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_9" value="3"><span>3.倍</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_9" value="4"><span id="span_1_9_ans">4.秒</span></input></div>
+        </div>
+        <div class="row" id="div_1_9_ans" style="display:none">
+            <span>(9)4 句意：下次的目标是10秒钟。</span>
+            <span>1.培（ばい）：培养，不单独使用。</span>
+            <span>2.抄（しょう）：抄。</span>
+            <span>3.倍（ばい）：倍，加倍。</span>
+            <span>4.秒（びょう）：秒。</span>
+        </div>
 
         <script>
-            var statearray = {};
-            for (let i = 1; i <= 35; i++) {
-                statearray["state_1_" + i] = "hide";
-            }
-            for (let i = 1; i <= 39; i++) {
-                statearray["state_2_" + i] = "hide";
-            }
-
             function showans(id) {
                 var span_ans = document.getElementById("span_" + id + "_ans");
                 var div_ans = document.getElementById("div_" + id + "_ans");
                 var button_ans = document.getElementById("button_" + id + "_ans");
-                if (statearray["state_" + id] == "hide") {
+                if (button_ans.innerHTML == "查看答案") {
                     span_ans.style = "background-color:yellow";
                     div_ans.style = "display:block";
                     button_ans.innerHTML = "隐藏答案";
-                    statearray["state_" + id] = "show";
                 } else {
                     span_ans.style = "";
                     div_ans.style = "display:none";
                     button_ans.innerHTML = "查看答案";
-                    statearray["state_" + id] = "hide";
                     var radios = document.getElementsByName("radio_" + id); // 获取指定名称的radio按钮集合
                     for (var i = 0; i < radios.length; i++) {
                         if (radios[i].checked = true) { // 使用指定的值作为判断条件
@@ -109,6 +140,18 @@
                             break;
                         }
                     }
+                }
+            }
+
+            function showans_q(no,start,end){
+                for (let i = start; i <= end; i++) {
+                    showans("1_"+i);
+                }
+                var button_q_ans = document.getElementById("button_q_"+no+"_ans");
+                if(button_q_ans.innerHTML = "隐藏问题1全部答案"){
+                    button_q_ans.innerHTML = "查看问题1全部答案";
+                }else{
+                    button_q_ans.innerHTML = "隐藏问题1全部答案";
                 }
             }
         </script>
