@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>2017年12月新日语能力考试</title>
+</head>
+<style type="text/css">
+    /** {
+        padding: 0;
+        margin: 0;
+        border: 0px;
+    }
+
+    .container {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+    }
+
+    .webtitle {
+        text-align: center;
+        height: 50px;
+    }
+
+    .grouptitle {
+        height: 40px;
+    }
+
+    .examtitle {
+        height: 30px;
+    }
+
+    .examcontent {
+        height: 25px;
+        font-size: 14px;
+    }
+    .examanswer{
+        background-color:gainsboro;
+        padding-left: 2em;
+        padding-right: 100px;
+        font-size: 12px;
+    }*/
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>2017年12月新日语能力考试</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>言語知識（文字・語彙）</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h3>問題１_のことばの読み方として最もよいものを、１・２・３・４から一つえらびなさい。</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (1)中村部長と<span style="text-decoration: underline;">直接</span>話した&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_1')" id="button_1_1_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_1" value="1"><span>1.ちょくぜつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_1" value="2"><span>2.ちょうせつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_1" value="3"><span
+                    id="span_1_1_ans">3.ちょくせつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_1" value="4"><span>4.ちょうぜつ</span></input></div>
+        </div>
+        <div class="row" id="div_1_1_ans" style="display:none">
+            <span>(1)3 句意：直接和中村部长进行了对话。</span>
+            <span>考察汉字词，“直”音读为“ちょく・じき”，“接”音读为“せつ”。</span>
+        </div>
+
+        <script>
+            var statearray = {};
+            for (let i = 1; i <= 35; i++) {
+                statearray["state_1_" + i] = "hide";
+            }
+            for (let i = 1; i <= 39; i++) {
+                statearray["state_2_" + i] = "hide";
+            }
+
+            function showans(id) {
+                var span_ans = document.getElementById("span_" + id + "_ans");
+                var div_ans = document.getElementById("div_" + id + "_ans");
+                var button_ans = document.getElementById("button_" + id + "_ans");
+                if (statearray["state_" + id] == "hide") {
+                    span_ans.style = "background-color:yellow";
+                    div_ans.style = "display:block";
+                    button_ans.innerHTML = "隐藏答案";
+                    statearray["state_" + id] = "show";
+                } else {
+                    span_ans.style = "";
+                    div_ans.style = "display:none";
+                    button_ans.innerHTML = "查看答案";
+                    statearray["state_" + id] = "hide";
+                    var radios = document.getElementsByName("radio_" + id); // 获取指定名称的radio按钮集合
+                    for (var i = 0; i < radios.length; i++) {
+                        if (radios[i].checked = true) { // 使用指定的值作为判断条件
+                            radios[i].checked = false; // 将满足条件的radio选中
+                            break;
+                        }
+                    }
+                }
+            }
+        </script>
+    </div>
+    <!--
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">Project Name</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>                    
+                    <li><a href="#">About</a></li>                    
+                    <li><a href="#">Contact</a></li>                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+-->
+    <!--
+    <div class="container">
+        <div class="webtitle">
+            <h1>2017年12月新日语能力考试</h1>
+        </div>
+        <div class="grouptitle">
+            <h2>言語知識（文字・語彙）</h2>
+        </div>
+        <div class="examtitle">
+            <h3>問題１_のことばの読み方として最もよいものを、１・２・３・４から一つえらびなさい。</h3>
+        </div>
+        <div class="examcontent">
+            (1)中村部長と<u>直接</u>話した&emsp;&emsp;<button onclick="showans_1_1()" id="button_1_1_ans">查看答案</button>
+        </div>
+        <div class="examcontent">
+            <input type="radio" name="radio_1_1" value="1"><span>1.ちょくぜつ</span></input>&emsp;&emsp;
+            <input type="radio" name="radio_1_1" value="1"><span>2.ちょうせつ</span></input>&emsp;&emsp;
+            <input type="radio" name="radio_1_1" value="1"><span id="span_1_1_ans">3.ちょくせつ</span></input>&emsp;&emsp;
+            <input type="radio" name="radio_1_1" value="1"><span>4.ちょうぜつ</span></input>
+        </div>
+        <div class="examanswer" id="div_1_1_ans" style="display:none">
+            <span>(1)3 句意：直接和中村部长进行了对话。</span>
+            <span>考察汉字词，“直”音读为“ちょく・じき”，“接”音读为“せつ”。</span>
+        </div>
+        <script>
+            var bl_state_1_1 = "hide";
+            function showans_1_1() {
+                var span_1_1_ans = document.getElementById("span_1_1_ans");
+                var div_1_1_ans = document.getElementById("div_1_1_ans");
+                var button_1_1_ans = document.getElementById("button_1_1_ans");
+                if (bl_state_1_1 == "hide") {
+                    span_1_1_ans.style = "background-color:yellow";
+                    div_1_1_ans.style = "display:block";
+                    button_1_1_ans.innerHTML = "隐藏答案";
+                    bl_state_1_1 = "show";
+                } else {
+                    span_1_1_ans.style = "";
+                    div_1_1_ans.style = "display:none";
+                    button_1_1_ans.innerHTML = "查看答案";
+                    bl_state_1_1 = "hide";
+                    var radios = document.getElementsByName("radio_1_1"); // 获取指定名称的radio按钮集合
+                    for (var i = 0; i < radios.length; i++) {
+                        if (radios[i].checked = true) { // 使用指定的值作为判断条件
+                            radios[i].checked = false; // 将满足条件的radio选中
+                            break;
+                        }
+                    }
+                }
+            }
+        </script>
+    </div>-->
+</body>
+
+</html>
