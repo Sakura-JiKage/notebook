@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>2017年12月新日语能力考试</title>
+</head>
+<script>
+    function showans(id, hope_state) {
+        var span_ans = document.getElementById("span_" + id + "_ans");
+        var div_ans = document.getElementById("div_" + id + "_ans");
+        var button_ans = document.getElementById("button_" + id + "_ans");
+        var radio_ans = document.getElementById("radio_" + id + "_ans");
+        // 选择“查看答案”时
+        if ((hope_state == "" && button_ans.innerHTML == "查看答案") || (hope_state == "查看答案")) {
+            if (radio_ans.checked) {
+                span_ans.style = "background-color:#00ff00";
+            } else {
+                span_ans.style = "background-color:yellow";
+            }
+            div_ans.style = "display:block;border-left:4px solid var(--theme-color,#42b983);marigin:2em 0;padding-left:20px;color:#858585;";
+            button_ans.innerHTML = "隐藏答案";
+        } else {
+            // 选择“隐藏答案”时
+            span_ans.style = "";
+            div_ans.style = "display:none";
+            button_ans.innerHTML = "查看答案";
+            var radios = document.getElementsByName("radio_" + id); // 获取指定名称的radio按钮集合
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) { // 使用指定的值作为判断条件
+                    radios[i].checked = false; // 将满足条件的radio选中
+                    break;
+                }
+            }
+        }
+
+    }
+
+    function showans_q(no, start, end) {
+        var button_q_ans = document.getElementById("button_q_" + no + "_ans");
+        if (button_q_ans.innerHTML == "隐藏 问题" + no + "全部答案") {
+            button_q_ans.innerHTML = "查看/核对 问题" + no + "全部答案";
+            for (let i = start; i <= end; i++) {
+                showans("1_" + i, "隐藏答案");
+            }
+        } else {
+            button_q_ans.innerHTML = "隐藏 问题" + no + "全部答案";
+            for (let i = start; i <= end; i++) {
+                showans("1_" + i, "查看答案");
+            }
+        }
+    }
+</script>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">2017年12月新日语能力考试</a>
+            </div>
+            <div class="col"><a class="btn btn-default"
+                    href="https://sakura-jikage.github.io/notebook/#/日语/语法/JLPT_N3试题">返回主页</a></div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col" style="font-weight: bold;">
+                【言語知識（文字・語彙）】
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row" style="font-weight: bold;">
+            <div class="col">
+                問題１_のことばの読み方として最もよいものを、１・２・３・４から一つえらびなさい。<button class="btn btn-primary btn-sm"
+                    onclick="showans_q(1,1,8)" id="button_q_1_ans">查看/核对 问题1全部答案</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (1)中村部長と<span style="text-decoration: underline;">直接</span>話した。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_1','')" id="button_1_1_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_1" value="1"><span>1.ちょくぜつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_1" value="2"><span>2.ちょうせつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_1" value="3" id="radio_1_1_ans"><span
+                    id="span_1_1_ans">3.ちょくせつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_1" value="4"><span>4.ちょうぜつ</span></input></div>
+        </div>
+        <div class="row" id="div_1_1_ans" style="display:none">
+            【解析答案】<p>(1)3 句意：直接和中村部长进行了对话。</p>
+            <p>考察汉字词，“直”音读为“ちょく・じき”，“接”音读为“せつ”。</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (2)これはすぐには<span style="text-decoration: underline;">燃えません</span>。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_2','')" id="button_1_2_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_2" value="1"><span>1.にえません</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_2" value="2"><span>2.ひえません</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_2" value="3"><span>3.きえません</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_2" value="4" id="radio_1_2_ans"><span
+                    id="span_1_2_ans">4.もえません</span></input></div>
+        </div>
+        <div class="row" id="div_1_2_ans" style="display:none">
+            【解析答案】<p>(2)4 句意：这个不会马上就燃烧起来。</p>
+            <p>1.煮える（にえる）：煮，煮熟。
+                <br />2.冷える（ひえる）：变冷，放凉。
+                <br />3.消える（きえる）：消失。
+                <br />4.燃える（もえる）：燃烧。
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (3)この<span style="text-decoration: underline;">位置</span>に車を止めてください。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_3','')" id="button_1_3_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_3" value="1"><span>1.とじ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_3" value="2"><span>2.いじ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_3" value="3"><span>3.とち</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_3" value="4" id="radio_1_3_ans"><span
+                    id="span_1_3_ans">4.いち</span></input></div>
+        </div>
+        <div class="row" id="div_1_3_ans" style="display:none">
+            【解析答案】<p>(3)4 句意：请将车停到这个位置。</p>
+            <p>考察汉字词，“位”音读为“い”，“置”音读为“ち”</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (4)<span style="text-decoration: underline;">計算</span>ができたので見てください。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_4','')" id="button_1_4_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_4" value="1"><span>1.けいかく</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_4" value="2"><span>2.けいざん</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_4" value="3" id="radio_1_4_ans"><span
+                    id="span_1_4_ans">3.けいさん</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_4" value="4"><span>4.けいがく</span></input></div>
+        </div>
+        <div class="row" id="div_1_4_ans" style="display:none">
+            【解析答案】<p>(4)3 句意：计算好了，请看一下。</p>
+            <p>考察汉字词，“計”音读为“けい”，“算”音读为“さん”</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (5)ずっとパソコンを使っていて疲れたので腕を<span
+                    style="text-decoration: underline;">回して</span>みた。&emsp;&emsp;<button class="btn btn-primary btn-sm"
+                    onclick="showans('1_5','')" id="button_1_5_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_5" value="1" id="radio_1_5_ans"><span
+                    id="span_1_5_ans">1.まわして</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_5" value="2"><span>2.おして</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_5" value="3"><span>3.おろして</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_5" value="4"><span>4.のばして</span></input></div>
+        </div>
+        <div class="row" id="div_1_5_ans" style="display:none">
+            【解析答案】<p>(5)1 句意：因为一直用电脑（手）很累，所以试着转了转手腕。</p>
+            <p>1.回す（まわす）：转动，扭动。
+                <br />2.押す（おす）：推，按压。
+                <br />3.下ろす（おろす）：取下，拿下。
+                <br />4.伸ばす（のばす）：拉长，延伸。
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (6)ここは<span style="text-decoration: underline;">禁煙</span>です。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_6','')" id="button_1_6_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_6" value="1"><span>1.きねん</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_6" value="2"><span>2.きえん</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_6" value="3"><span>3.きんねん</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_6" value="4" id="radio_1_6_ans"><span
+                    id="span_1_6_ans">4.きんえん</span></input></div>
+        </div>
+        <div class="row" id="div_1_6_ans" style="display:none">
+            【解析答案】<p>(6)4 句意：此处禁止吸烟。</p>
+            <p>考察汉字词，“禁”音读为“きん”，“煙”音读为“えん”</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (7)きれいに<span style="text-decoration: underline;">結んで</span>ください。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_7','')" id="button_1_7_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_7" value="1"><span>1.たたんで</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_7" value="2" id="radio_1_7_ans"><span
+                    id="span_1_7_ans">2.むすんで</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_7" value="3"><span>3.つつんで</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_7" value="4"><span>4.ならんで</span></input></div>
+        </div>
+        <div class="row" id="div_1_7_ans" style="display:none">
+            【解析答案】<p>(7)2 句意：请系得漂亮一点。</p>
+            <p>1.畳む（たたむ）：叠，折。
+                <br />2.結ぶ（むすぶ）：系，扎。
+                <br />3.包む（つつむ）：包，裹。
+                <br />4.並ぶ（ならぶ）：排，列。
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (8)<span
+                    style="text-decoration: underline;">手術</span>をしなくても治りますから、大丈夫ですよ。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_8','')" id="button_1_8_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_8" value="1" id="radio_1_8_ans"><span
+                    id="span_1_8_ans">1.しゅじゅつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_8" value="2"><span>2.てじゅつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_8" value="3"><span>3.しゅしゅつ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_8" value="4"><span>4.てしゅつ</span></input></div>
+        </div>
+        <div class="row" id="div_1_8_ans" style="display:none">
+            【解析答案】<p>(8)1 句意：不用做手术也能治好，没事儿的。</p>
+            <p>考察汉字词，“手”音读为“しゅ”，“術”音读为“じゅつ”</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row" style="font-weight: bold;">
+            <div class="col">
+                問題2_のことばを漢字で書くとものき、最もよいを、１・２・３・４から一つえらびなさい。<button class="btn btn-primary btn-sm"
+                    onclick="showans_q(2,9,14)" id="button_q_2_ans">查看/核对 问题2全部答案</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (9)次の目標は10<span style="text-decoration: underline;">びょう</span>です。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_9','')" id="button_1_9_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_9" value="1"><span>1.培</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_9" value="2"><span>2.抄</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_9" value="3"><span>3.倍</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_9" value="4" id="radio_1_9_ans"><span
+                    id="span_1_9_ans">4.秒</span></input></div>
+        </div>
+        <div class="row" id="div_1_9_ans" style="display:none">
+            【解析答案】<p>(9)4 句意：下次的目标是10秒钟。</p>
+            <p>1.培（ばい）：培养，不单独使用。
+                <br />2.抄（しょう）：抄。
+                <br />3.倍（ばい）：倍，加倍。
+                <br />4.秒（びょう）：秒。
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (10)ボールが遠くまで<span style="text-decoration: underline;">とんだ</span>。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_10','')" id="button_1_10_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_10" value="1"><span>1.投んだ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_10" value="2"><span>2.打んだ</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_10" value="3" id="radio_1_10_ans">
+                <span id="span_1_10_ans">3.飛んだ</span></input>
+            </div>
+            <div class="col"><input type="radio" name="radio_1_10" value="4"><span>4.転んだ</span></input></div>
+        </div>
+        <div class="row" id="div_1_10_ans" style="display:none">
+            【解析答案】<p>(10)3 句意：球飞到了很远的地方。</p>
+            <p>1.投げる（なげる）：投，扔
+                <br />2.打つ（うつ）：击（球）
+                <br />3.飛ぶ（とぶ）：飞
+                <br />4.転ぶ（ころぶ）：倒，跌倒
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (11)ここは、<span style="text-decoration: underline;">さかみち</span>が多いですね。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_11','')" id="button_1_11_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_11" value="1"><span>1.岩道</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_11" value="2"><span>2.板道</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_11" value="3"><span>3.石道</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_11" value="4" id="radio_1_11_ans"><span
+                    id="span_1_11_ans">4.坂道</span></input></div>
+        </div>
+        <div class="row" id="div_1_11_ans" style="display:none">
+            【解析答案】<p>(11)4 句意：这里有很多斜坡。</p>
+            <p>4.坂道（さかみち）：坡道。其他选项为干扰项</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (12)この皿だけ色が<span style="text-decoration: underline;">ちがい</span>ます。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_12','')" id="button_1_12_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_12" value="1"><span>1.遺います</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_12" value="2"><span>2.達います</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_12" value="3"><span>3.遅います</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_12" value="4" id="radio_1_12_ans"><span
+                    id="span_1_12_ans">4.違います</span></input></div>
+        </div>
+        <div class="row" id="div_1_12_ans" style="display:none">
+            【解析答案】<p>(12)4 句意：只有这个碟子的颜色不同。</p>
+            <p>1.遺す（のこす）：遗留，留下
+                <br />2.達する（たっする）：到达，完成
+                <br />3.遅れる（おくれる）：晚，落后
+                <br />4.違う（ちがう）：不一致
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (13)あの会社とは、いい<span
+                    style="text-decoration: underline;">かんけい</span>をつくりたい。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_13','')" id="button_1_13_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_13" value="1"><span>1.関系</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_13" value="2" id="radio_1_13_ans"><span
+                    id="span_1_13_ans">2.関係</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_13" value="3"><span>3.間係</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_13" value="4"><span>4.間系</span></input></div>
+        </div>
+        <div class="row" id="div_1_13_ans" style="display:none">
+            【解析答案】<p>(13)2 句意：想要和那家公司建立起良好的合作关系。</p>
+            <p>2.関係（かんけい）：关系，关联。其他为干扰项</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (14)父は<span style="text-decoration: underline;">きょうし</span>をしています。&emsp;&emsp;<button
+                    class="btn btn-primary btn-sm" onclick="showans('1_14','')" id="button_1_14_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_14" value="1"><span>1.教仕</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_14" value="2"><span>2.教帥</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_14" value="3" id="radio_1_14_ans"><span
+                    id="span_1_14_ans">3.教師</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_14" value="4"><span>4.教任</span></input></div>
+        </div>
+        <div class="row" id="div_1_14_ans" style="display:none">
+            【解析答案】<p>(14)3 句意：我的父亲是一名教师。</p>
+            <p>3.教師（きょうし）：教师，老师。其他选项为干扰项</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row" style="font-weight: bold;">
+            <div class="col">
+                問題3（）に入れるのに最もよいものを、１・２・３・４から一つえらびなさい。<button class="btn btn-primary btn-sm" onclick="showans_q(3,15,25)"
+                    id="button_q_3_ans">查看/核对 问题3全部答案</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (15)今から行うインタビューの（）は、授業に対する希望を聞くことです。&emsp;&emsp;<button class="btn btn-primary btn-sm"
+                    onclick="showans('1_15','')" id="button_1_15_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_15" value="1"><span>1.影響</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_15" value="2" id="radio_1_15_ans"><span
+                    id="span_1_15_ans">2.目的</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_15" value="3"><span>3.様子</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_15" value="4"><span>4.原因</span></input></div>
+        </div>
+        <div class="row" id="div_1_15_ans" style="display:none">
+            【解析答案】<p>(15)2 句意：接下来的采访，是为听取大家对授课的要求。</p>
+            <p>1.影響（えいきょう）：影响
+                <br />2.目的（もくてき）：目的，目标
+                <br />3.様子（ようす）：样子，情况
+                <br />4.原因（げんいん）：原因
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (16)食事中、コップを（）に落として割ってしまった。&emsp;&emsp;<button class="btn btn-primary btn-sm"
+                    onclick="showans('1_16','')" id="button_1_16_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_16" value="1" id="radio_1_16_ans"><span
+                    id="span_1_16_ans">1.床</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_16" value="2"><span>2.天井</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_16" value="3"><span>3.屋根</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_16" value="4"><span>4.壁</span></input></div>
+        </div>
+        <div class="row" id="div_1_16_ans" style="display:none">
+            【解析答案】<p>(16)1 句意：吃饭时杯子掉到地上，摔破了。</p>
+            <p>1.床（ゆか）：地板。</p>
+            <p>2.天井（てんじょう）：天花板。</p>
+            <p>3.屋根（やね）：屋顶。</p>
+            <p>4.壁（かべ）：墙壁。</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (17)駅前に建設中の立派なマンションが、来月ついに（）するらしい。&emsp;&emsp;<button class="btn btn-primary btn-sm"
+                    onclick="showans('1_17','')" id="button_1_17_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_17" value="1"><span>1.会場</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_17" value="2" id="radio_1_17_ans"><span
+                    id="span_1_17_ans">2.完成</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_17" value="3"><span>3.発展</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_17" value="4"><span>4.進行</span></input></div>
+        </div>
+        <div class="row" id="div_1_17_ans" style="display:none">
+            【解析答案】<p>(17)2 句意：车站前那栋十分气派的在建中的公寓，好像下个月终于要完工了。</p>
+            <p>1.開場（かいじょう）：开门。
+                <br />2.完成（かんせい）：完成。
+                <br />3.発展（はってん）：发展，扩展。
+                <br />4.進行（しんこう）：进行，进展。
+            </p>
+
+            <p><b>&lt;立派（りっぱ）&gt;</b>
+                <br />ナ形容词
+                <br />1.漂亮，美观
+                <br />►立派な家<code>漂亮的房屋</code>
+                <br />2.优秀，出色
+                <br />►立派にやってのける<code>漂亮地完成</code>
+            </p>
+
+            <p><b>&lt;ついに&gt;</b>
+                <br />表示花费时间或经过艰苦努力终于完成或实现某事。
+                <br />►やった！ついに「<ruby>金星<rp>(</rp>
+                    <rt>きんぼし</rt>
+                    <rp>)</rp>
+                </ruby>」プロジェクトがここまで来たぞ。
+                <br />类似表达还有「やっと」，但它用于期待的事情终于实现的情形。
+                <br />「やっと」侧重于完成某事花费的时间较长，而「ついに」则重点在于实现的结果。
+                <br />►あの2人は7年交際して，ついに婚約した<code>两人交往了7年，终于订婚了</code>。
+                <br />►あの2人は7年交際して，やっと婚約した<code>两人经过7年的交往，总算订婚了</code>。
+                <br />此外，「ついに~なかった」中的「ついに」表示"到最后"的意思。
+                <br />►みんなで彼にビ一ルをすすめたが，ついに一口も飲まなかった<code>尽管大家一起劝他喝啤酒，但最终他还是一口也没喝</code>。
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (18)この店の料理は安くておいしいので、店の前にはいつも長い（）ができている。&emsp;&emsp;<button class="btn btn-primary btn-sm"
+                    onclick="showans('1_18','')" id="button_1_18_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_18" value="1"><span>1.線</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_18" value="2" id="radio_1_18_ans"><span
+                    id="span_1_18_ans">2.列</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_18" value="3"><span>3.帯</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_18" value="4"><span>4.波</span></input></div>
+        </div>
+        <div class="row" id="div_1_18_ans" style="display:none">
+            【解析答案】<p>(18)2 句意：这家店的菜又便宜又好吃，所以门口总是排着长队。</p>
+            <p>1.線（せん）：线，线路</p>
+            <p>2.列（れつ）：行列</p>
+            <p>3.帯（たい）：带子，~段，~区间，~带</p>
+            <p>4.波（なみ）：波浪</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (19)最近太ったので、ズボンがきつくて、はくとすぐに（）なってしまう。&emsp;&emsp;<button class="btn btn-primary btn-sm"
+                    onclick="showans('1_19','')" id="button_1_19_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_19" value="1" id="radio_1_19_ans"><span
+                    id="span_1_19_ans">1.くるしく</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_19" value="2"><span>2.まぶしく</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_19" value="3"><span>3.きびしく</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_19" value="4"><span>4.あやしく</span></input></div>
+        </div>
+        <div class="row" id="div_1_19_ans" style="display:none">
+            【解析答案】<p>(19)1 句意：最近长胖了，裤子有点紧，一穿上去就觉得难受。</p>
+            <p>1.くるしい：痛苦，难受。</p>
+            <p>2.まぶしい：耀眼，刺眼。</p>
+            <p>3.きびしい：严格，严厉。</p>
+            <p>4.あやしい：奇怪，可疑。</p>
+
+            <p><b>&lt:太る（ふとる）&gt;</b>
+                <br />自动词，一类动词
+                <br />1.胖，发福
+                <br />►3キロ太った<code>胖了三公斤</code>。
+                <br />2.发财，增加
+                <br />►戦後のどさくさで太る<code>在战后的混乱中发财</code>。
+            </p>
+
+            <p><b>&lt:ズボン&gt;</b>
+                <br />名词
+                <br />jupon;裤子
+                <br />►ズボンをはく<code>穿裤子</code>。
+            </p>
+
+            <p><b>&lt:きつくて、原形：きつい&gt;</b>
+                <br />イ形容词
+                <br />1.强烈的，刚强的。
+                <br />►きつい寒さ<code>严寒</code>。
+                <br />2.紧紧的，没有空隙的
+                <br />►帯をきつくしめる<code>把带子系紧</code>。
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (20)この小説の中に（）する人たちは、皆大きな夢を持っている。&emsp;&emsp;<button class="btn btn-primary btn-sm"
+                    onclick="showans('1_20','')" id="button_1_20_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_20" value="1"><span>1.滞在</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_20" value="2" id="radio_1_20_ans"><span
+                    id="span_1_20_ans">2.登場</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_20" value="3"><span>3.発生</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_20" value="4"><span>4.同席</span></input></div>
+        </div>
+        <div class="row" id="div_1_20_ans" style="display:none">
+            【解析答案】<p>(20)2 句意：这篇小说里的登场人物个个都胸怀远大梦想。</p>
+            <p>1.滞在（たいざい）：停留</p>
+            <p>2.登場（とうじょう）：上场，登台，出现</p>
+            <p>3.発生（はっせい）：发生</p>
+            <p>4.同席（どうせき）：同座</p>
+
+            <p><b>&lt:皆（みな）&gt;</b>
+                <br />名词：大家
+                <br />副词：全都，完全，毫不保留地
+            </p>
+
+            <p><b>&lt:人たち（ひとたち）&gt;</b>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (21)薬を飲んでゆっくり休んだら（）良くなったので、明日は会社に行けそうです。&emsp;&emsp;<button class="btn btn-primary btn-sm"
+                    onclick="showans('1_21','')" id="button_1_21_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_21" value="1"><span>1.かならず</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_21" value="2"><span>2.なるべく</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_21" value="3" id="radio_1_21_ans"><span
+                    id="span_1_21_ans">3.ずいぶん</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_21" value="4"><span>4.いつでも</span></input></div>
+        </div>
+        <div class="row" id="div_1_21_ans" style="display:none">
+            【解析答案】<p>(21)3 句意：喝了药好好休息后觉得好多了，明天应该可以去上班。</p>
+            <p>1.かならず：一定，必然。</p>
+            <p>2.なるべく：尽量。</p>
+            <p>3.ずいぶん：非常，很。</p>
+            <p>4.いつでも：随时，总是。</p>
+
+            <p><b>&lt:飲む（のむ）→て形：飲んで&gt;</b>
+            </p>
+
+            <p><b>&lt:休む（やすむ）→た形：休んだ&gt;</b>
+            </p>
+
+            <p><b>&lt;休んだら&gt;</b>
+                ‌<br />动词た形＋ら表示假定，强调动作的先后顺序
+                <br/>表示假定将来某个事情、动作、状态完成后，再去做另一个行为或动作。近似于「～てから/～た時/～た場合」的意思。
+                <br />1.「～たらいい」，语气积极；「～ばいい」“按照前项那样去做就行了”，语气消极。
+                <br />2.向人询问怎么做才好时，不能用「どうするといいですか」这种说法;应该用「どうすればいいですか/<mark>どうしたらいいですか</mark>」。但回答别人的询问时可以用「～といい」。
+                <br/>详细参照：<a href="网络语法知识/日语假定形ば、たら、なら、と相关学习.html" target="_blank">日语假定形ば、たら、なら、と相关学习</a>，或者前往<a href="https://jp.hjenglish.com/riyucihui/p1413138/" target="_blank">原网站地址</a>
+            </p>
+
+            <p><b>&lt;ゆっくり&gt;</b>
+                <br />副词
+                <br />1.有余地，宽敞舒适，充裕，安静
+                <br />►どうぞごゆっくり<code>请再坐一会儿。</code>
+                <br />副词，自动词，三类动词
+                <br />►ご飯をゆっくり食べる<code>慢慢地吃饭</code>
+            </p>
+
+            <p><b>&lt;良くなった&gt;</b>
+                <br />なる的过去形式是なった，良い的过去形式是良くなった，意思是“已经好了”。
+                <br/>い形容词去掉い＋さ，表示什么的样子，良い→良さ，表示“好的程度”，「頭の良さ<code>聪明程度</code>」。
+            </p>
+
+            <p><b>&lt;行けそうです&gt;</b>
+                <br />「そうです」（敬体），「そうだ」（简体），既可以是样态助动词，也可以是传闻助动词
+                <br/>样态助动词
+                <br/>首先来看一下「そうです」「そうだ」身为样态助动词时，它表示的含义是“好像”、“似乎”、“看起来”、“马上要”。接续为动词的连用形，形容词、形容动词的词干+「そうです」「そうだ」。
+                <br/>そうに＋用言：►おいしそうに見える<code>看起来好吃</code>。
+                <br/>そうで＋中顿法：►彼女に見られそうで嫌です<code>好像会被女朋友看见，我不干</code>。
+                <br/>そうで＋ない：►きれいそうでないから、嫌です<code>看着不太干净，我不要</code>。
+                <br/>还有そうだった表示过去时态，そうだったり表示并列，そうなら表示如果，そうだろ表示推量，そうな+体言的形式。
+                <br/>注意在敬体里，そうです否定形式根据前接词不同，是有变化的。形容词+そうではありません，动词+そうにありません。
+                <br/>そうです前接「ない」「いい」这两个特殊词也是有变化的，「ない」写成「なさそうです」，「いい」写成「よさそうです」。
+                <br/>
+                <br/>传闻助动词
+                <br/>「そうです」（敬体）「そうだ」（简体）还可以做传闻助动词，在接续上和它做样态助动词时是不一样的。
+                <br/>接续为：动词、形容词、形容动词、助动词れる、られる、せる、させる、ない等词的终止形+「そうです」（敬体）或「そうだ」（简体）。
+                <br/>传闻，顾名思义，就是“听说”“听闻”的意思。
+                <br/>►李さんも来ないそうです<code>听说小李也不来</code>。
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (22)&emsp;&emsp;<button class="btn btn-primary btn-sm" onclick="showans('1_22','')"
+                    id="button_1_22_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_22" value="1"><span>1.培</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_22" value="2"><span>2.抄</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_22" value="3"><span>3.倍</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_22" value="4" id="radio_1_22_ans"><span
+                    id="span_1_22_ans">4.秒</span></input></div>
+        </div>
+        <div class="row" id="div_1_22_ans" style="display:none">
+            【解析答案】<p>(22)4 句意：下次的目标是10秒钟。</p>
+            <p>1.培（ばい）：培养，不单独使用。</p>
+            <p>2.抄（しょう）：抄。</p>
+            <p>3.倍（ばい）：倍，加倍。</p>
+            <p>4.秒（びょう）：秒。</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (23)&emsp;&emsp;<button class="btn btn-primary btn-sm" onclick="showans('1_23','')"
+                    id="button_1_23_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_23" value="1"><span>1.培</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_23" value="2"><span>2.抄</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_23" value="3"><span>3.倍</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_23" value="4" id="radio_1_23_ans"><span
+                    id="span_1_23_ans">4.秒</span></input></div>
+        </div>
+        <div class="row" id="div_1_23_ans" style="display:none">
+            【解析答案】<p>(23)4 句意：下次的目标是10秒钟。</p>
+            <p>1.培（ばい）：培养，不单独使用。</p>
+            <p>2.抄（しょう）：抄。</p>
+            <p>3.倍（ばい）：倍，加倍。</p>
+            <p>4.秒（びょう）：秒。</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (24)&emsp;&emsp;<button class="btn btn-primary btn-sm" onclick="showans('1_24','')"
+                    id="button_1_24_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_24" value="1"><span>1.培</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_24" value="2"><span>2.抄</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_24" value="3"><span>3.倍</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_24" value="4" id="radio_1_24_ans"><span
+                    id="span_1_24_ans">4.秒</span></input></div>
+        </div>
+        <div class="row" id="div_1_24_ans" style="display:none">
+            【解析答案】<p>(24)4 句意：下次的目标是10秒钟。</p>
+            <p>1.培（ばい）：培养，不单独使用。</p>
+            <p>2.抄（しょう）：抄。</p>
+            <p>3.倍（ばい）：倍，加倍。</p>
+            <p>4.秒（びょう）：秒。</p>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <p><!--空一行 分隔作用--></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> (25)&emsp;&emsp;<button class="btn btn-primary btn-sm" onclick="showans('1_25','')"
+                    id="button_1_25_ans">查看答案</button></div>
+        </div>
+        <div class="row">
+            <div class="col"><input type="radio" name="radio_1_25" value="1"><span>1.培</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_25" value="2"><span>2.抄</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_25" value="3"><span>3.倍</span></input></div>
+            <div class="col"><input type="radio" name="radio_1_25" value="4" id="radio_1_25_ans"><span
+                    id="span_1_25_ans">4.秒</span></input></div>
+        </div>
+        <div class="row" id="div_1_25_ans" style="display:none">
+            【解析答案】<p>(25)4 句意：下次的目标是10秒钟。</p>
+            <p>1.培（ばい）：培养，不单独使用。</p>
+            <p>2.抄（しょう）：抄。</p>
+            <p>3.倍（ばい）：倍，加倍。</p>
+            <p>4.秒（びょう）：秒。</p>
+        </div>
+    </div>
+</body>
+
+</html>
