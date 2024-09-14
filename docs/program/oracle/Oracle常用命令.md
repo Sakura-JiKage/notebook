@@ -1,18 +1,4 @@
-# Oracle 知识笔记
-
-记载内容：
-
-ORA故障解决办法
-
-ORACLE 命令
-
-ORACLE SQL
-
-ORACLE 环境配置相关
-
-等等其他
-
-## ORACLE 命令
+## ORACLE 常用命令
 
 ### 1 最多可以打开的游标数
 ```sql
@@ -150,194 +136,59 @@ SELECT * FROM ALL_TAB_COLUMNS;
 SELECT * FROM USER_TAB_COLUMNS;
 ```
 
-## ORACLE 查询SQL
-
-### 1 查询
-
-```SQL
-SELECT *
-  FROM DEPT;
-```
+### 11 恢复被删除的数据
 
 ```sql
-SELECT  DEPTNO
-       ,DNAME
-  FROM DEPT;
- WHERE DEPTNO = '1001';
+
 ```
 
-```SQL
-SELECT ENAME || '一个月工资为' || SAL AS SALINFO
-  FROM EMP;
-```
+### 12 行列转换
 
-```SQL
-    SELECT  ENAME
-           ,EMPNO
-           ,DNAME
-      FROM EMP E
-INNER JOIN DEPT D
-        ON E.DEPTNO = D.DEPTNO
-     WHERE JOB = UPPER('CLERK');
-```
-
-```SQL
-SELECT ENAME
-  FROM EMP
- WHERE (
-               DEPTNO = 10
-           AND JOB = UPPER('MANAGER')
-       )
-    OR (
-               DEPTNO = 20
-           AND JOB = UPPER('CLERK')
-       );
-```
-
-```SQL
-SELECT DISTINCT JOB
-  FROM EMP
- WHERE COMM > 0;
-```
-
-```SQL
-SELECT ENAME
-  FROM EMP
- WHERE COMM IS NULL;
-   AND JOB IS NOT NULL;
- --WHERE COMM = NULL;无论COMM是NULL、还是NULL以外，（COMM = NULL）都是否。
-```
-
-```SQL
-SELECT EMPNO
-  FROM EMP
- WHERE HIREDATE < TO_DATE('1982/01/01','YYYY/MM/DD');
-```
-
-```SQL
-SELECT  EMPNO
-       ,ENAME
-       ,SQL
-  FROM EMP
- WHERE SAL BETWEEN 2000 AND 4000; -- SAL >= 2000 AND SAL <= 4000
-```
+#### 第1种方式 max+decode
 
 ```sql
-SELECT EMPNO
-  FROM EMP
- WHERE ENAME LIKE '%R_'; -- %表示任意个，_表示一个
+
 ```
+
+#### 第2种方式 pivot
 
 ```sql
-SELECT EMPNO
-  FROM EMP
- WHERE ENAME IN ('SMITH','KING');
+
 ```
 
-### 2 函数
-
-#### 1 LPAD、RPAD
+### 13 分组排序
 
 ```sql
-SELECT LPAD(DNAME,10,' ')
-  FROM DEPT;
+
 ```
 
-#### 2 REPLACE
-
-```SQL
-SELECT REPLACE(ENAME,'S','s')
-  FROM EMP;
-```
-
-#### 3 SUBSTR
-
-```SQL
-SELECT SUBSTR(ENAME, 1, 3)
-  FROM EMP;
-```
-
-#### 4 INSTR
-
-```SQL
-SELECT INSTR(ENAME, 'S')
-  FROM EMP;
-```
-
-```SQL
-SELECT INSTR(ENAME, 'T', 1, 2)
-  FROM EMP;
-```
-
-#### 5 LENGTH
-
-```SQL
-SELECT LENGTH(ENAME)
-  FROM EMP;
-```
-
-#### 6 ADD_MONTHS
-
-```SQL
-SELECT  ADD_MONTHS(SYSDATE, -12)
-       ,ADD_MONTHS(SYSDATE, 12)
-  FROM DUAL;
-```
-
-#### 7 LAST_DAY
-
-```SQL
-SELECT LAST_DAY(SYSDATE)
-  FROM DUAL;
-```
-
-#### 8 MONTHS_BETWEEN
-
-```SQL
-SELECT MONTHS_BETWEEN(SYSDATE, TO_DATE('2024/12/01', 'YYYY/MM/DD'))
-  FROM DUAL;
-```
-
-#### 9 TO_CHAR
-
-[参照CSDN博主夏雨情的文章《Oracle 中 TO_CHAR用法》](https://blog.csdn.net/qq_44094695/article/details/128069763)
-
-##### TO_CHAR(DATE,'格式')
-
-格式：yyyy-MM-dd HH24:mi:ss
-
-```SQL
-SELECT TO_CHAR(SYSDATE, 'YYYY/MM/DD')
-  FROM DUAL;
-```
-
-##### TO_CHAR(NUMBER,'格式')
-
-#### 10 DECODE
-
-```SQL
-SELECT DECODE(SAL, 800, '低工资', '高工资')
-  FROM EMP;
-```
-
-#### 11 TRUNC
-
-```SQL
-SELECT TRUNC(SAL/1000)
-  FROM EMP;
-```
-
-#### 12 NEXT_DAY
-
-```SQL
-SELECT NEXT_DAY(ADD_MONTHS(HIREDATE, 6), 2)
-  FROM EMP;
-```
-
-#### 13 NVL
+### 14 分组排序取第一条
 
 ```sql
-SELECT NVL(COMM, 0)
-  FROM EMP;
+
 ```
+
+### 15 窗口函数的使用
+
+#### row_number()
+
+```sql
+
+```
+
+#### rank()
+
+```sql
+
+```
+
+#### dense_rank()
+
+```sql
+
+```
+
+#### partition by
+
+
 
