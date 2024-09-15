@@ -1,5 +1,14 @@
+# 2017年12月新日语能力考试
 
-（1）中村部長と直接話した。 
+## 【言語知識（文字・語彙）】
+
+### 問題1
+
+**問題１____のことばの読み方として最もよいものを、１・２・３・４から一つえらびなさい。**
+
+#### （1）
+
+中村部長と<u>直接</u>話した。 
 
 1.ちょくぜつ&emsp;&emsp;2.ちょうせつ&emsp;&emsp;3.ちょくせつ&emsp;&emsp;4.ちょうぜつ
 
@@ -10,10 +19,158 @@
 </head>
 <body>
     <div><button id="chakan_1" onclick="hidetimu('1')">查看答案</button></div>
-    <div id="daan_1" style="display:none">第1题的答案是59</div>
+    <div id="daan_1" style="display:none">
+【解析答案】(1)3 句意：直接和中村部长进行了对话。<br/>
+考察汉字词，“直”音读为“ちょく・じき”，“接”音读为“せつ”。
+    </div>
 </body>
 </html>
 
+#### （2）
 
+これはすぐには<u>燃えません</u>。 
 
+1.にえません&emsp;&emsp;2.ひえません&emsp;&emsp;3.きえません&emsp;&emsp;4.もえません
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div><button id="chakan_2" onclick="hidetimu('2')">查看答案</button></div>
+    <div id="daan_2" style="display:none">
+【解析答案】(2)4 句意：这个不会马上就燃烧起来。<br/>
+1.煮える（にえる）：煮，煮熟。<br/>
+2.冷える（ひえる）：变冷，放凉。<br/>
+3.消える（きえる）：消失。<br/>
+4.燃える（もえる）：燃烧。
+    </div>
+</body>
+</html>
+
+#### （3）
+
+この<u>位置</u>に車を止めてください。
+
+1.とじ&emsp;&emsp;2.いじ&emsp;&emsp;3.とち&emsp;&emsp;4.いち
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div><button id="chakan_3" onclick="hidetimu('3')">查看答案</button></div>
+    <div id="daan_3" style="display:none">
+【解析答案】(3)4 句意：请将车停到这个位置。<br/>
+考察汉字词，“位”音读为“い”，“置”音读为“ち”
+    </div>
+</body>
+</html>
+
+#### （4）
+
+<u>計算</u>ができたので見てください。
+
+1.けいかく&emsp;&emsp;2.けいざん&emsp;&emsp;3.けいさん&emsp;&emsp;4.けいがく
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div><button id="chakan_4" onclick="hidetimu('4')">查看答案</button></div>
+    <div id="daan_4" style="display:none">
+【解析答案】(4)3 句意：计算好了，请看一下。<br/>
+        考察汉字词，“計”音读为“けい”，“算”音读为“さん”
+    </div>
+</body>
+</html>
+
+#### （5）
+
+ずっとパソコンを使っていて疲れたので腕を<u>回して</u>みた。
+
+1.まわして&emsp;&emsp;2.おして&emsp;&emsp;3.おろして&emsp;&emsp;4.のばして
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div><button id="chakan_5" onclick="hidetimu('5')">查看答案</button></div>
+    <div id="daan_5" style="display:none">
+【解析答案】(5)1 句意：因为一直用电脑（手）很累，所以试着转了转手腕。<br/>
+1.回す（まわす）：转动，扭动。<br/>
+2.押す（おす）：推，按压。<br/>
+3.下ろす（おろす）：取下，拿下。<br/>
+4.伸ばす（のばす）：拉长，延伸。
+    </div>
+</body>
+</html>
+
+#### （6）
+
+ここは<u>禁煙</u>です。
+
+1.きねん&emsp;&emsp;2.きえん&emsp;&emsp;3.きんねん&emsp;&emsp;4.きんえん
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div><button id="chakan_6" onclick="hidetimu('6')">查看答案</button></div>
+    <div id="daan_6" style="display:none">
+        【解析答案】(6)4 句意：此处禁止吸烟。<br/>
+        考察汉字词，“禁”音读为“きん”，“煙”音读为“えん”
+    </div>
+</body>
+</html>
+
+#### （7）
+
+きれいに<u>結んで</u>ください。
+
+1.たたんで&emsp;&emsp;&emsp;&emsp;2.むすんで&emsp;&emsp;3.つつんで&emsp;&emsp;4.ならんで
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div><button id="chakan_7" onclick="hidetimu('7')">查看答案</button></div>
+    <div id="daan_7" style="display:none">
+【解析答案】(7)2 句意：请系得漂亮一点。<br/>
+1.畳む（たたむ）：叠，折。<br/>
+2.結ぶ（むすぶ）：系，扎。<br/>
+3.包む（つつむ）：包，裹。<br/>
+4.並ぶ（ならぶ）：排，列。
+    </div>
+</body>
+</html>
+
+#### （8）
+
+<u>手術</u>をしなくても治りますから、大丈夫ですよ。
+
+1.しゅじゅつ&emsp;&emsp;2.てじゅつ&emsp;&emsp;3.しゅしゅつ&emsp;&emsp;4.てしゅつ
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div><button id="chakan_8" onclick="hidetimu('8')">查看答案</button></div>
+    <div id="daan_8" style="display:none">
+        【解析答案】(8)1 句意：不用做手术也能治好，没事儿的。<br/>
+考察汉字词，“手”音读为“しゅ”，“術”音读为“じゅつ”
+    </div>
+</body>
+</html>
