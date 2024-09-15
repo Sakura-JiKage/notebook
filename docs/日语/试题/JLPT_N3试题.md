@@ -9,23 +9,11 @@
 <meta charset="utf-8">
 </head>
 <body>
-    <div><button id="button_1" onclick="myhide('1')">查看答案</button></div>
-    <div id="ans_1" style="display:none">第1题的答案是59</div>
-<script>
-    function myhide(id){
-        var btn = document.getElementById("button_"+id);
-        var ansdiv = document.getElementById("ans_"+id);
-        if(btn.innerHTML == "查看答案"){
-            ansdiv.style = "display:block";
-            btn.innerHTML = "隐藏答案";
-        }else{
-            ansdiv.style = "display:none";
-            btn.innerHTML = "查看答案";
-        }
-    }
-</script>
+    <div><button id="chakan_1" onclick="hidetimu('1')">查看答案</button></div>
+    <div id="daan_1" style="display:none">第1题的答案是59</div>
 </body>
 </html>
+
 
 
 
