@@ -1,1 +1,0 @@
-[2017年12月新日语能力考试](https://sakura-jikage.github.io/notebook/日语/试题/JLPT_N3试题/2017年12月新日语能力考试.html)
