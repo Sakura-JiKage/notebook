@@ -21,4 +21,6 @@
         * [Oracle 概念文档](/编程/oracle/Oracle数据库概念文档_中文版.md)
     * PLSQL
         * [PLSQL常用代码例子](/编程/plsql/PLSQL常用代码例子.md)
+    * JAVA
+        * [JAVA常用代码例子](/编程/java/JAVA常用代码例子.md)
 
