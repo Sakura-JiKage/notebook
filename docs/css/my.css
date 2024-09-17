@@ -1,4 +1,5 @@
 #fixedback-to-page {
+   z-index: 999;
     position: fixed;
     bottom: 20px;
     right: 20px;
