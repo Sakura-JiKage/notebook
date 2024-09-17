@@ -10,7 +10,7 @@
 
 [参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
 
-[演示页面](https://sakura-jikage.github.io/notebook/前端/html/实例/0001_Tab选项卡/index.html)
+[演示页面](https://sakura-jikage.github.io/notebook/编程/html/实例/0001_Tab选项卡/index.html)
 
 **index.html**
 
@@ -273,7 +273,7 @@ ul li p {
 
 [参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
 
-[演示页面](https://sakura-jikage.github.io/notebook/前端/html/实例/0002_幽灵漂浮/index.html)
+[演示页面](https://sakura-jikage.github.io/notebook/编程/html/实例/0002_幽灵漂浮/index.html)
 
 **index.html**
 
@@ -437,7 +437,7 @@ body{
 
 [参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
 
-[演示页面](https://sakura-jikage.github.io/notebook/前端/html/实例/0003_日升loading/index.html)
+[演示页面](https://sakura-jikage.github.io/notebook/编程/html/实例/0003_日升loading/index.html)
 
 **index.html**
 
