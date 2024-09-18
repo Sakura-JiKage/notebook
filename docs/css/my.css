@@ -7,6 +7,15 @@
     cursor: pointer;
   }
 
+  /* 屏幕右下角悬浮效果 */
+.xuanfu2 {
+  z-index: 999;
+   position: fixed;
+   bottom: 60px;
+   right: 20px;
+   cursor: pointer;
+ }
+
 /* 屏幕右下角悬浮按钮(a标签)的样式 */
 .xuanfubutton {
     background-color: #3bb3e0;
