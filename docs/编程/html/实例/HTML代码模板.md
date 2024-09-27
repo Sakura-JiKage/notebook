@@ -661,7 +661,11 @@ body{
 
 [参照的网址：https://www.bilibili.com/video/BV14J411r72t](https://www.bilibili.com/video/BV14J411r72t)
 
-[演示页面](编程\html\实例\0004_超炫酷的Web3d特效/index.html)
+[演示页面](https://sakura-jikage.github.io/notebook/编程/html/实例/0004_超炫酷的Web3d特效/index.html)
+
+[演示页面2](0004_超炫酷的Web3d特效/index.html)
+
+[演示页面3](/0004_超炫酷的Web3d特效/index.html)
 
 **index.html**
 
