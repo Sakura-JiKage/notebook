@@ -8,13 +8,13 @@
 
 ### 参考源
 
-[参照的网址：https://www.bilibili.com/video/BV1uK411A7S6](https://www.bilibili.com/video/BV1uK411A7S6)
+&emsp;&emsp;[参照的网址：https://www.bilibili.com/video/BV1uK411A7S6](https://www.bilibili.com/video/BV1uK411A7S6)
 
-[参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
+&emsp;&emsp;[参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
 
 ### 演示网页页面
 
-[演示页面](https://sakura-jikage.github.io/notebook/编程/html/实例/0001_Tab选项卡/index.html)
+&emsp;&emsp;[演示页面：0001_Tab选项卡/index.html](https://sakura-jikage.github.io/notebook/编程/html/实例/0001_Tab选项卡/index.html)
 
 ### 代码
 
@@ -277,13 +277,13 @@ ul li p {
 
 ### 参考源
 
-[参照的网址：https://www.bilibili.com/video/BV1ut4y1B7xP](https://www.bilibili.com/video/BV1ut4y1B7xP)
+&emsp;&emsp;[参照的网址：https://www.bilibili.com/video/BV1ut4y1B7xP](https://www.bilibili.com/video/BV1ut4y1B7xP)
 
-[参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
+&emsp;&emsp;[参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
 
 ### 演示网页页面
 
-[演示页面](https://sakura-jikage.github.io/notebook/编程/html/实例/0002_幽灵漂浮/index.html)
+&emsp;&emsp;[演示页面：0002_幽灵漂浮/index.html](https://sakura-jikage.github.io/notebook/编程/html/实例/0002_幽灵漂浮/index.html)
 
 ### 代码
 
@@ -447,13 +447,13 @@ body{
 
 ### 参考源
 
-[参照的网址：https://www.bilibili.com/video/BV1nZ4y1r7yR](https://www.bilibili.com/video/BV1nZ4y1r7yR)
+&emsp;&emsp;[参照的网址：https://www.bilibili.com/video/BV1nZ4y1r7yR](https://www.bilibili.com/video/BV1nZ4y1r7yR)
 
-[参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
+&emsp;&emsp;[参照的源代码地址：https://github.com/bilibili-ayang/HTML-CSS-case](https://github.com/bilibili-ayang/HTML-CSS-case)
 
 ### 演示网页页面
 
-[演示页面](https://sakura-jikage.github.io/notebook/编程/html/实例/0003_日升loading/index.html)
+&emsp;&emsp;[演示页面：0003_日升loading/index.html](https://sakura-jikage.github.io/notebook/编程/html/实例/0003_日升loading/index.html)
 
 ### 代码
 
@@ -679,11 +679,15 @@ body{
 
 ### 参考源
 
-[参照的网址：https://www.bilibili.com/video/BV14J411r72t](https://www.bilibili.com/video/BV14J411r72t)
+&emsp;&emsp;[参照的网址：https://www.bilibili.com/video/BV14J411r72t](https://www.bilibili.com/video/BV14J411r72t)
+
+&emsp;&emsp;参照B站UP主[IT从业者洛华生](https://space.bilibili.com/486144221)的视频[【程序牛人敲代码，编写超炫酷的Web 3d特效，全程高能】 ](https://www.bilibili.com/video/BV14J411r72t)
+
+&emsp;&emsp;记着某一个周末的刷到了这个视频，就按照这个视频一步一步的照着手敲了下来。完成的时候，天色已经黑了，寝室的屋里黑漆漆的，没有开灯，室友不在，只有我一个人。当时看到成果物的时候，很是兴奋，虽然我知道自己虽然照着写了下来，但却无法学会其中的代码的。然而时间，慢慢积累，总有一天会明白，写出这样的代码的。
 
 ### 演示网页页面
 
-[演示页面](https://sakura-jikage.github.io/notebook/编程/html/实例/0004_超炫酷的Web3d特效/index.html)
+&emsp;&emsp;[演示页面：0004_超炫酷的Web3d特效/index.html](https://sakura-jikage.github.io/notebook/编程/html/实例/0004_超炫酷的Web3d特效/index.html)
 
 ### 代码
 
