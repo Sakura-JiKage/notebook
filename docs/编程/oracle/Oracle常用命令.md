@@ -46,6 +46,7 @@ SELECT  table_name
 
 ### 6 表被锁时，解锁表的SQL
 [参照博客园博主“Smile”的文章《Oracle删除临时表》](https://www.cnblogs.com/ButterflyEffect/p/14016288.html)
+
 ```sql
 SELECT  sid
        ,serial#
@@ -63,7 +64,29 @@ SELECT  sid
 ALTER system kill session '751,16962';
 ```
 
-### 7 压缩表空间数据文件的空间
+### 7 创建会话级临时表
+
+[参照博客园博主“Smile”的文章《Oracle删除临时表》](https://www.cnblogs.com/ButterflyEffect/p/14016288.html)
+
+```sql
+CREATE GLOBAL Temporary TABLE TEMPTABLENAME
+ON COMMIT PRESERVE ROWS
+AS
+SELECT .....FROM..
+```
+
+### 8 创建事务级临时表
+
+[参照博客园博主“Smile”的文章《Oracle删除临时表》](https://www.cnblogs.com/ButterflyEffect/p/14016288.html)
+
+```sql
+CREATE GLOBAL Temporary TABLE TEMPTABLENAME
+ON COMMIT DELETE ROWS
+INSERT INTO TEMPTABLENAME VALUES('','',....)
+```
+
+### 9 压缩表空间数据文件的空间
+
 [参照CSDN博主"成明宁杰"的文章《解决Oracle占用磁盘太大的问题》](https://blog.csdn.net/adaivskean/article/details/124826340)
 <font size = '1'>数据库运行了一段时间后，表空间一直增加，但是实际数据量并没那么大。删除数据或者truncate表并不会降低表空间。这是因为表空间不足时会自动扩容，但是不会自动收缩。</font>
 ```sql
@@ -89,7 +112,7 @@ alter database datafile 'D:\ORACLE\ORADATA\ADMIN\LOG.DBF' resize 1000M;
 --等等SQL
 ```
 
-### 8 查询占用内存大小排名前10的表ID
+### 10 查询占用内存大小排名前10的表ID
 [参照CSDN博主"成明宁杰"的文章《解决Oracle占用磁盘太大的问题》](https://blog.csdn.net/adaivskean/article/details/124826340)
 ```sql
 SELECT *
@@ -104,7 +127,7 @@ SELECT *
  WHERE ROWNUM < 10;
 ```
 
-### 9 查询某个表占用的表空间大小
+### 11 查询某个表占用的表空间大小
 [参照CSDN博主"成明宁杰"的文章《解决Oracle占用磁盘太大的问题》](https://blog.csdn.net/adaivskean/article/details/124826340)
 ```sql
   SELECT  t.segment_name
@@ -118,7 +141,7 @@ GROUP BY  OWNER
          ,t.segment_type;
 ```
 
-### 10 查询所有表的所有列的情报、所有表的注释、所有列的注释
+### 12 查询所有表的所有列的情报、所有表的注释、所有列的注释
 ```sql
 -- 查询所有用户的表,视图等
 SELECT * FROM ALL_TAB_COMMENTS;
@@ -136,7 +159,7 @@ SELECT * FROM ALL_TAB_COLUMNS;
 SELECT * FROM USER_TAB_COLUMNS;
 ```
 
-### 11 恢复被删除的数据
+### 13 恢复被删除的数据
 
 ```sql
 /*第一步：查询删除时间点的数据，检查哪些时间点的数据是自己需要恢复的数据 */
@@ -152,13 +175,13 @@ INSERT INTO M_PROPLAYER select * from M_PROPLAYER_BAK;
 drop table M_PROPLAYER_BAK purge;
 ```
 
-### 12 恢复被删除的表
+### 14 恢复被删除的表
 
 ```sql
 flashback table M_PROPLAYER to before drop;
 ```
 
-### 13 行列转换
+### 15 行列转换
 
 #### 第1种方式 max+decode
 
@@ -173,19 +196,19 @@ flashback table M_PROPLAYER to before drop;
 
 ```
 
-### 14 分组排序
+### 16 分组排序
 
 ```sql
 
 ```
 
-### 15 分组排序取第一条
+### 17 分组排序取第一条
 
 ```sql
 
 ```
 
-### 16 窗口函数的使用
+### 18 窗口函数的使用
 
 #### row_number()
 
