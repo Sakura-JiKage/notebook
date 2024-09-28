@@ -139,14 +139,31 @@ SELECT * FROM USER_TAB_COLUMNS;
 ### 11 恢复被删除的数据
 
 ```sql
+/*第一步：查询删除时间点的数据，检查哪些时间点的数据是自己需要恢复的数据 */
+SELECT * FROM M_PROPLAYER as of timestamp to_timestamp('20240928 201314','yyyy-mm-dd hh24:mi:ss');
 
+/*第二步：将删除时间点的数据备份到临时表里 */
+CREATE TABLE M_PROPLAYER_BAK AS SELECT * FROM M_PROPLAYER as of timestamp to_timestamp('20240928 201314','yyyy-mm-dd hh24:mi:ss');
+
+/*第三步：将临时表里的数据恢复到真实表里去 */
+INSERT INTO M_PROPLAYER select * from M_PROPLAYER_BAK;
+
+/*第四步：删除临时表，并释放回收站的空间 */
+drop table M_PROPLAYER_BAK purge;
 ```
 
-### 12 行列转换
+### 12 恢复被删除的表
+
+```sql
+flashback table M_PROPLAYER to before drop;
+```
+
+### 13 行列转换
 
 #### 第1种方式 max+decode
 
 ```sql
+
 
 ```
 
@@ -156,19 +173,19 @@ SELECT * FROM USER_TAB_COLUMNS;
 
 ```
 
-### 13 分组排序
+### 14 分组排序
 
 ```sql
 
 ```
 
-### 14 分组排序取第一条
+### 15 分组排序取第一条
 
 ```sql
 
 ```
 
-### 15 窗口函数的使用
+### 16 窗口函数的使用
 
 #### row_number()
 
