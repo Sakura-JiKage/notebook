@@ -178,3 +178,144 @@ public class XiuGaiTuPianChiCun {
 }
 ```
 
+## 4.反射+自定义注解，实现单项目Check
+
+**工程目录结构**
+
+![](images\4-1.png)
+
+**自定义注解类，SingleItemCheck.java**
+
+```java
+package demo;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+/**
+ * 自定义注解
+ *
+ */
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface SingleItemCheck {
+
+	// 容许的最大长度
+	int maxlength();
+}
+
+```
+
+**Entity类，StudentEntity.java，添加自定义注解**
+
+```java
+package demo.entity;
+
+import demo.SingleItemCheck;
+
+public class StudentEntity {
+
+	@SingleItemCheck(maxlength=10)
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+
+```
+
+**Test.java类，实现对添加了自定义注解的字段，进行最大长度的Check。**
+
+```java
+package demo;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+
+import demo.entity.StudentEntity;
+
+public class Test {
+
+	/**
+	 * 执行Check
+	 * 
+	 * @param entityClass
+	 * @throws SecurityException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 */
+	public static void validation(Object o) throws NoSuchMethodException, SecurityException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException {
+
+		// 遍历Field
+		Field[] fields = o.getClass().getDeclaredFields();
+		for (Field field : fields) {
+			// 放开权限
+			field.setAccessible(true);
+
+			// 遍历Field的所有注解
+			Annotation[] fieldAnnotations = field.getAnnotations();
+			for (Annotation fieldAnnotation : fieldAnnotations) {
+
+				// 对指定类型的注解进行分析
+				if ("interface demo.SingleItemCheck".equals(fieldAnnotation.annotationType().toString())) {
+					SingleItemCheck singleItemCheck = (SingleItemCheck) fieldAnnotation;
+
+					// 取得注解的值
+					int maxlength = singleItemCheck.maxlength();
+					// 取得Field的值
+					Object value = field.get(o);
+					// 取得Field的长度
+					int length = value.toString().length();
+
+					// 判断
+					if (length > maxlength) {
+						System.out.println(field.getName() + "的长度超过了" + maxlength);
+					} else {
+						System.out.println(field.getName() + "的长度没有超过" + maxlength);
+					}
+				}
+			}
+			field.setAccessible(false);
+		}
+	}
+
+	public static void main(String[] args) throws Exception {
+		StudentEntity se = new StudentEntity();
+		se.setName("蜡笔小新蜡笔小新蜡笔小");
+		validation(se);
+
+		StudentEntity se1 = new StudentEntity();
+		se1.setName("蜡笔小新蜡笔小新蜡");
+		validation(se1);
+	}
+}
+
+```
+
+运行Test.java。
+运行结果如下：
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+    <div style="border:1px">
+        <tr><td>name的长度超过了10</td></tr>
+        <tr><td>name的长度没有超过10</td></tr>
+    </div>
+</body>
+</html>
+
