@@ -685,6 +685,8 @@ body{
 
 &emsp;&emsp;记着某一个周末的刷到了这个视频，就按照这个视频一步一步的照着手敲了下来。完成的时候，天色已经黑了，寝室的屋里黑漆漆的，没有开灯，室友不在，只有我一个人。当时看到成果物的时候，很是兴奋，虽然我知道自己虽然照着写了下来，但却无法学会其中的代码的。然而时间，慢慢积累，总有一天会明白，写出这样的代码的。
 
+&emsp;&emsp;暂时不支持移动端触摸移动。
+
 ### 演示网页页面
 
 &emsp;&emsp;[演示页面：0004_超炫酷的Web3d特效/index.html](https://sakura-jikage.github.io/notebook/编程/html/实例/0004_超炫酷的Web3d特效/index.html)
@@ -698,7 +700,11 @@ body{
 <html lang='en' onselectstart='return false'>
 
 <head>
-    <meta charset='utf-8' />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='jquery-2.2.4.js'></script>
+    <title>Document</title>
     <style>
         li,
         ul,
@@ -781,7 +787,6 @@ body{
             <div class="bg-mask"></div>
         </div>
     </div>
-    <script src='jquery-2.2.4.js'></script>
     <script>
         // 开启一个独立的空间避免全局变量污染
         (function () {
