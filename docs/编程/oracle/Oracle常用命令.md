@@ -358,5 +358,36 @@ COMMENT ON COLUMN T_PLAYLER_PICTURES.USEKBN IS '背景作用';
 
 #### partition by
 
+### 20 ORACLE问题
+**001**：[【Oracle】ORA-28002解决方法](https://blog.csdn.net/weixin_62685484/article/details/129324480)
 
+### 21 查询用户是否存在
+
+```
+-- 连接DBA用户
+sqlplus sys/123456 as sysdba
+
+-- 查看当前已有的用户
+SELECT USERNAME FROM DBA_USERS;
+```
+
+### 22 创建新的用户
+
+```
+-- 连接DBA用户
+sqlplus sys/123456 as sysdba
+-- 创建空间
+CREATE TABLESPACE dongmandbuser_wk DATAFILE 'dongmandbuser_wk.dat' SIZE 10M AUTOEXTEND ON;
+CREATE TEMPORARY TABLESPACE dongmandbuser_wk_temp TEMPFILE 'dongmandbuser_wk_temp.dat' SIZE 5M AUTOEXTEND ON;
+-- 创建用户
+DROP USER dongmandbuser;
+CREATE USER dongmandbuser IDENTIFIED BY "123456" DEFAULT TABLESPACE dongmandbuser_wk TEMPORARY TABLESPACE dongmandbuser_wk_temp;
+-- 授权
+GRANT CREATE SESSION, CREATE VIEW, ALTER SESSION, CREATE SEQUENCE TO dongmandbuser;
+GRANT CREATE SYNONYM, CREATE DATABASE LINK, RESOURCE , UNLIMITED TABLESPACE TO dongmandbuser;
+GRANT execute ON sys.dbms_stats TO dongmandbuser;
+ALTER SESSION SET CURRENT_SCHEMA=dongmandbuser;
+ALTER SESSION SET NLS_LANGUAGE=American;
+ALTER SESSION SET NLS_TERRITORY=America;
+```
 
