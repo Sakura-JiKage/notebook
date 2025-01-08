@@ -80,7 +80,7 @@ public class Test {
 		String[] files = file.list();
 
 		// 如果不是文件夹
-		if(!file.isFile()) {
+		if(file.isFile()) {
 			System.out.println("当前路径不是文件夹!");
 			return ;
 		}
@@ -103,7 +103,38 @@ public class Test {
 
 ### 2.1 读文件
 
-#### 2.1.1 读Txt文件
+#### 2.1.1 读入Txt文件
+
+```java
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        String inputFilePath = "src/main/java/com/nyaa/dongmanlist.txt";
+        try {
+        	// 1.7
+			List<String> lines = Files.readAllLines(Paths.get(inputFilePath), StandardCharsets.UTF_8);
+            for (String line : lines) {
+                System.out.println(line);
+            }
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
+```
+
+
 
 #### 2.1.2 读Excel文件
 
@@ -111,7 +142,43 @@ public class Test {
 
 ### 2.2 写文件
 
-#### 2.2.1 读Txt文件
+#### 2.2.1 写出Txt文件
+
+```java
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// 准备要写入到文件当中的List的数据
+        List<String> newLines = new ArrayList<String>();
+        for (int i=0;i<10;i++) {
+        	newLines.add("a"+i);
+        }
+
+        // 要写的Txt格式的文件路径
+        String OutputFilePath = "test.txt";
+        try {
+        	
+        	// 1.7
+        	// 按照UTF-8编码写出文件
+            Files.write(Paths.get(OutputFilePath), newLines, Charset.forName("UTF-8"));
+            System.out.println("写入成功");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+
+}
+
+```
+
+
 
 #### 2.2.2 读Excel文件
 
