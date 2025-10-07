@@ -6,18 +6,11 @@
     <title>队伍选人系统</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #0d6efd;
-            --danger-color: #dc3545;
-            --success-color: #198754;
-        }
-        
         body {
             background-color: #f8f9fa;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         
         .main-content {
@@ -49,7 +42,7 @@
         
         .operation-tip {
             background-color: #e7f3ff;
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid #0d6efd;
             padding: 12px;
             border-radius: 4px;
             margin: 15px 0;
@@ -100,6 +93,26 @@
             .teams-container {
                 grid-template-columns: 1fr;
             }
+        }
+        
+        .player-card {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin: 3px;
+            cursor: grab;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        
+        .player-card:hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .player-card.dragging {
+            opacity: 0.5;
         }
         
         .area-header {
@@ -162,6 +175,21 @@
             color: #495057;
             margin-right: 8px;
             font-size: 0.9rem;
+            cursor: text;
+            border-bottom: 1px dashed transparent;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        .team-name:hover {
+            border-bottom: 1px dashed #007bff;
+            background-color: #f8f9fa;
+        }
+        
+        .team-name:focus {
+            outline: none;
+            border-bottom: 1px solid #007bff;
+            background-color: #e7f3ff;
         }
         
         .team-actions {
@@ -221,6 +249,7 @@
             border-radius: 10px;
             font-size: 0.65rem;
             font-weight: bold;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         .member-item:last-child {
@@ -257,6 +286,16 @@
             min-height: 65px;
         }
         
+        .trophy-icon {
+            color: #6f42c1;
+            margin-right: 8px;
+        }
+        
+        .people-icon {
+            color: #0d6efd;
+            margin-right: 8px;
+        }
+        
         /* 选手池5列布局 */
         .positions-container {
             display: grid;
@@ -289,7 +328,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
-        /* 位置颜色定义 */
+        /* 位置颜色定义 - 调整颜色差异更明显 */
         .position-top {
             background: linear-gradient(135deg, #ff6b6b, #c0392b);
         }
@@ -332,11 +371,13 @@
             cursor: grab;
             transition: all 0.2s;
             border: 1px solid #e9ecef;
+            position: relative;
         }
         
         .player-item:hover {
             background: #f8f9fa;
             transform: translateX(2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .player-header {
@@ -362,12 +403,33 @@
             font-size: 0.75rem;
         }
         
+        .editable {
+            cursor: text;
+            border-bottom: 1px dashed #007bff;
+            padding: 1px 2px;
+            min-width: 50px;
+            display: inline-block;
+            font-size: 0.85rem;
+        }
+        
+        .editable:focus {
+            outline: none;
+            background-color: #e7f3ff;
+            border-bottom: 1px solid #007bff;
+        }
+        
         .clear-btn {
-            background: linear-gradient(135deg, var(--danger-color), #c82333);
+            background: linear-gradient(135deg, #dc3545, #c82333);
             border: none;
             padding: 6px 12px;
             font-size: 0.8rem;
             font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .clear-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
         }
         
         .import-export-btn {
@@ -378,12 +440,6 @@
         .add-team-btn {
             padding: 6px 12px;
             font-size: 0.8rem;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 20px;
-            color: #6c757d;
         }
     </style>
 </head>
@@ -405,18 +461,27 @@
                 <!-- 第三行：操作提示 -->
                 <div class="operation-tip">
                     <div class="d-flex align-items-center">
-                        <span class="fw-medium" style="font-size: 0.9rem;">
-                            💡 操作提示：从下方选手池拖动选手到上方队伍中，每队最多5人且位置不能重复，第一个选择的选手为队长。选手被选中后会从选手池移除，确保每个选手只能加入一个队伍。
-                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-info-circle-fill text-primary me-2" viewBox="0 0 16 16">
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                        </svg>
+                        <span class="fw-medium" style="font-size: 0.9rem;">新新操作提示：从下方选手池拖动选手到上方队伍中，每队最多5人且位置不能重复，第一个选择的选手为队长。选手被选中后会从选手池移除，确保每个选手只能加入一个队伍。</span>
                     </div>
                 </div>
                 
                 <!-- 导入导出区域 -->
                 <div class="import-export-area">
                     <button class="btn btn-success import-export-btn" id="importBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-upload me-1" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                        </svg>
                         导入数据
                     </button>
                     <button class="btn btn-primary import-export-btn" id="exportBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-download me-1" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                        </svg>
                         导出数据
                     </button>
                     <input type="file" id="importFile" accept=".json" style="display: none;">
@@ -424,37 +489,54 @@
                 
                 <!-- 队伍区域 -->
                 <div class="team-area">
+                    <!-- 队伍区域标题栏 -->
                     <div class="area-header">
                         <div class="area-title">
-                            <h5 class="mb-0 fw-bold" style="font-size: 1rem;">🏆 队伍阵容（每队5人）</h5>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trophy-fill trophy-icon" viewBox="0 0 16 16">
+                                <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>
+                            </svg>
+                            <h5 class="mb-0 fw-bold" style="font-size: 1rem;">队伍阵容（每队5人）</h5>
                         </div>
                         <div class="area-actions">
                             <button class="btn btn-outline-success add-team-btn" id="addTeamBtn">
-                                ➕ 添加队伍
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-circle me-1" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                </svg>
+                                添加队伍
                             </button>
                             <button class="btn btn-danger clear-btn" id="clearAllBtn">
-                                🗑️ 一键清空
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-trash-fill me-1" viewBox="0 0 16 16">
+                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                </svg>
+                                一键清空
                             </button>
                         </div>
                     </div>
                     
-                    <!-- 队伍列表 -->
+                    <!-- 队伍列表 - 网格布局 -->
                     <div class="teams-container" id="teamsContainer">
-                        <div class="loading">正在加载队伍数据...</div>
+                        <!-- 队伍将通过JavaScript生成 -->
                     </div>
                 </div>
                 
                 <!-- 选手池区域 -->
                 <div class="player-pool-area">
+                    <!-- 选手池区域标题栏 -->
                     <div class="area-header">
                         <div class="area-title">
-                            <h5 class="mb-0 fw-bold" style="font-size: 1rem;">👥 选手池</h5>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-people-fill people-icon" viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                            </svg>
+                            <h5 class="mb-0 fw-bold" style="font-size: 1rem;">选手池</h5>
                         </div>
                     </div>
                     
                     <!-- 5列选手布局 -->
                     <div class="positions-container" id="positionsContainer">
-                        <div class="loading">正在加载选手数据...</div>
+                        <!-- 位置列将通过JavaScript生成 -->
                     </div>
                 </div>
             </div>
@@ -468,442 +550,7 @@
         </div>
     </div>
 
-    <script>
-        // 等待DOM完全加载
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing app...');
-            
-            // 初始化数据
-            const teams = [
-                { id: 1, name: "猛虎队", color: "#dc3545", members: [] },
-                { id: 2, name: "飞鹰队", color: "#0d6efd", members: [] },
-                { id: 3, name: "巨龙队", color: "#198754", members: [] },
-                { id: 4, name: "猎豹队", color: "#fd7e14", members: [] },
-                { id: 5, name: "雄狮队", color: "#6f42c1", members: [] },
-                { id: 6, name: "战狼队", color: "#20c997", members: [] },
-                { id: 7, name: "凤凰队", color: "#e83e8c", members: [] }
-            ];
-
-            const playersByPosition = {
-                "上单": [
-                    { id: 1, name: "霸天剑魔", position: "上单" },
-                    { id: 2, name: "无双剑姬", position: "上单" },
-                    { id: 3, name: "荒漠屠夫", position: "上单" },
-                    { id: 4, name: "德玛西亚", position: "上单" },
-                    { id: 5, name: "暗裔剑魔", position: "上单" },
-                    { id: 6, name: "海洋之灾", position: "上单" }
-                ],
-                "打野": [
-                    { id: 7, name: "盲僧李青", position: "打野" },
-                    { id: 8, name: "德邦总管", position: "打野" },
-                    { id: 9, name: "虚空女皇", position: "打野" },
-                    { id: 10, name: "痛苦之拥", position: "打野" },
-                    { id: 11, name: "永猎双子", position: "打野" },
-                    { id: 12, name: "狂野女猎", position: "打野" }
-                ],
-                "中单": [
-                    { id: 13, name: "疾风剑豪", position: "中单" },
-                    { id: 14, name: "影流之主", position: "中单" },
-                    { id: 15, name: "九尾妖狐", position: "中单" },
-                    { id: 16, name: "卡牌大师", position: "中单" },
-                    { id: 17, name: "发条魔灵", position: "中单" },
-                    { id: 18, name: "时间刺客", position: "中单" }
-                ],
-                "射手": [
-                    { id: 19, name: "探险家EZ", position: "射手" },
-                    { id: 20, name: "暗夜猎手", position: "射手" },
-                    { id: 21, name: "皮城女警", position: "射手" },
-                    { id: 22, name: "惩戒之箭", position: "射手" },
-                    { id: 23, name: "暴走萝莉", position: "射手" },
-                    { id: 24, name: "圣枪游侠", position: "射手" }
-                ],
-                "辅助": [
-                    { id: 25, name: "魂锁典狱长", position: "辅助" },
-                    { id: 26, name: "风暴之怒", position: "辅助" },
-                    { id: 27, name: "仙灵女巫", position: "辅助" },
-                    { id: 28, name: "蒸汽机器人", position: "辅助" },
-                    { id: 29, name: "唤潮鲛姬", position: "辅助" },
-                    { id: 30, name: "弗雷尔卓德", position: "辅助" }
-                ]
-            };
-
-            const positionColors = {
-                "上单": "position-top",
-                "打野": "position-jungle", 
-                "中单": "position-mid",
-                "射手": "position-adc",
-                "辅助": "position-support"
-            };
-
-            let nextPlayerId = 31;
-            let nextTeamId = 8;
-
-            // 检查选手是否已经在某个队伍中
-            function isPlayerInAnyTeam(playerId) {
-                return teams.some(team => 
-                    team.members.some(member => member.id === playerId)
-                );
-            }
-
-            // 检查选手名称是否已经在其他队伍中使用
-            function isPlayerNameInOtherTeam(playerName, currentTeamId) {
-                return teams.some(team => 
-                    team.id !== currentTeamId && 
-                    team.members.some(member => member.name === playerName)
-                );
-            }
-
-            // 渲染队伍
-            function renderTeams() {
-                const teamsContainer = document.getElementById('teamsContainer');
-                if (!teamsContainer) {
-                    console.error('teamsContainer not found');
-                    return;
-                }
-                
-                let teamsHTML = '';
-                
-                teams.forEach(team => {
-                    let membersHTML = '';
-                    for (let i = 0; i < 5; i++) {
-                        if (team.members[i]) {
-                            const member = team.members[i];
-                            const isCaptain = i === 0;
-                            const positionClass = positionColors[member.position];
-                            membersHTML += `
-                                <div class="member-item" data-member-index="${i}">
-                                    <div class="member-header">
-                                        <div class="player-name-container">
-                                            <span class="player-name-static">${member.name}</span>
-                                        </div>
-                                        <div class="member-actions">
-                                            <button class="btn btn-outline-danger btn-xs" onclick="removeFromTeam(${team.id}, ${i})">移除</button>
-                                        </div>
-                                    </div>
-                                    <div class="position-and-captain">
-                                        <span class="position-tag ${positionClass}">${member.position}</span>
-                                        ${isCaptain ? '<span class="captain-badge">队长</span>' : ''}
-                                    </div>
-                                </div>
-                            `;
-                        } else {
-                            membersHTML += `<div class="member-item empty-slot">空位</div>`;
-                        }
-                    }
-                    
-                    teamsHTML += `
-                        <div class="team-card" data-team-id="${team.id}">
-                            <div class="team-header">
-                                <div class="team-info">
-                                    <div class="team-number" style="background-color: ${team.color}">${team.id}</div>
-                                    <span class="team-name">${team.name}</span>
-                                    <small class="text-muted">(${team.members.length}/5)</small>
-                                </div>
-                                <div class="team-actions">
-                                    <button class="btn btn-outline-danger btn-xs" onclick="removeTeam(${team.id})">移除</button>
-                                </div>
-                            </div>
-                            <div class="team-members">
-                                ${membersHTML}
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                teamsContainer.innerHTML = teamsHTML;
-                bindDragEvents();
-            }
-
-            // 渲染选手池
-            function renderPlayerPool() {
-                const positionsContainer = document.getElementById('positionsContainer');
-                if (!positionsContainer) {
-                    console.error('positionsContainer not found');
-                    return;
-                }
-                
-                let positionsHTML = '';
-                
-                Object.entries(playersByPosition).forEach(([position, players]) => {
-                    let playersHTML = '';
-                    players.forEach(player => {
-                        const colorClass = positionColors[position];
-                        playersHTML += `
-                            <div class="player-item" 
-                                 draggable="true" 
-                                 data-player-id="${player.id}" 
-                                 data-player-name="${player.name}" 
-                                 data-player-position="${player.position}">
-                                <div class="player-header">
-                                    <div class="player-name">${player.name}</div>
-                                    <div class="player-actions">
-                                        <button class="btn btn-outline-primary btn-xs" onclick="editPlayer('${position}', ${player.id})">修改</button>
-                                        <button class="btn btn-outline-danger btn-xs" onclick="removePlayer('${position}', ${player.id})">移除</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                    
-                    const colorClass = positionColors[position];
-                    positionsHTML += `
-                        <div class="position-column">
-                            <div class="position-title ${colorClass}">${position} (${players.length}名)</div>
-                            <div class="position-players">
-                                ${playersHTML}
-                            </div>
-                            <button class="btn btn-outline-success add-player-btn" onclick="addNewPlayer('${position}')">
-                                添加选手
-                            </button>
-                        </div>
-                    `;
-                });
-                
-                positionsContainer.innerHTML = positionsHTML;
-                bindPlayerDragEvents();
-            }
-
-            // 绑定选手拖拽事件
-            function bindPlayerDragEvents() {
-                document.querySelectorAll('.player-item').forEach(item => {
-                    item.addEventListener('dragstart', function(e) {
-                        this.style.opacity = '0.5';
-                        e.dataTransfer.setData('text/plain', JSON.stringify({
-                            id: this.dataset.playerId,
-                            name: this.dataset.playerName,
-                            position: this.dataset.playerPosition
-                        }));
-                    });
-                    
-                    item.addEventListener('dragend', function() {
-                        this.style.opacity = '1';
-                    });
-                });
-            }
-
-            // 绑定队伍拖拽事件
-            function bindDragEvents() {
-                document.querySelectorAll('.team-card').forEach(teamCard => {
-                    teamCard.addEventListener('dragover', function(e) {
-                        e.preventDefault();
-                        this.style.backgroundColor = '#f8f9fa';
-                    });
-                    
-                    teamCard.addEventListener('dragleave', function() {
-                        this.style.backgroundColor = 'white';
-                    });
-                    
-                    teamCard.addEventListener('drop', function(e) {
-                        e.preventDefault();
-                        this.style.backgroundColor = 'white';
-                        
-                        const playerData = JSON.parse(e.dataTransfer.getData('text/plain'));
-                        const teamId = parseInt(this.dataset.teamId);
-                        const team = teams.find(t => t.id === teamId);
-                        
-                        // 检查选手是否已经在其他队伍中
-                        if (isPlayerInAnyTeam(parseInt(playerData.id))) {
-                            alert('该选手已被其他队伍选中！');
-                            return;
-                        }
-                        
-                        // 检查是否已经存在相同位置的选手
-                        const hasSamePosition = team.members.some(member => member.position === playerData.position);
-                        if (hasSamePosition) {
-                            alert(`该队伍已有${playerData.position}位置的选手！`);
-                            return;
-                        }
-                        
-                        // 检查是否已经有其他队伍使用相同选手名称
-                        if (isPlayerNameInOtherTeam(playerData.name, teamId)) {
-                            alert(`选手"${playerData.name}"已被其他队伍选中！`);
-                            return;
-                        }
-                        
-                        if (team && team.members.length < 5) {
-                            team.members.push({
-                                id: parseInt(playerData.id),
-                                name: playerData.name,
-                                position: playerData.position
-                            });
-                            // 从选手池中移除该选手
-                            playersByPosition[playerData.position] = playersByPosition[playerData.position].filter(p => p.id !== parseInt(playerData.id));
-                            renderTeams();
-                            renderPlayerPool();
-                        } else {
-                            alert('队伍已满员！');
-                        }
-                    });
-                });
-            }
-
-            // 从队伍中移除选手
-            window.removeFromTeam = function(teamId, memberIndex) {
-                const team = teams.find(t => t.id === teamId);
-                if (team && team.members[memberIndex]) {
-                    const member = team.members[memberIndex];
-                    // 将选手放回选手池
-                    if (playersByPosition[member.position]) {
-                        playersByPosition[member.position].push(member);
-                    }
-                    team.members.splice(memberIndex, 1);
-                    renderTeams();
-                    renderPlayerPool();
-                }
-            }
-
-            // 移除选手
-            window.removePlayer = function(position, playerId) {
-                if (confirm('确定要移除这名选手吗？')) {
-                    playersByPosition[position] = playersByPosition[position].filter(p => p.id !== playerId);
-                    renderPlayerPool();
-                }
-            }
-
-            // 修改选手
-            window.editPlayer = function(position, playerId) {
-                const player = playersByPosition[position].find(p => p.id === playerId);
-                if (player) {
-                    const newName = prompt('请输入选手新名称：', player.name);
-                    if (newName && newName.trim()) {
-                        player.name = newName.trim();
-                        renderPlayerPool();
-                    }
-                }
-            }
-
-            // 添加新选手
-            window.addNewPlayer = function(position) {
-                const newName = prompt(`请输入新的${position}选手名称：`, `新${position}选手`);
-                if (newName && newName.trim()) {
-                    const newPlayer = {
-                        id: nextPlayerId++,
-                        name: newName.trim(),
-                        position: position
-                    };
-                    playersByPosition[position].push(newPlayer);
-                    renderPlayerPool();
-                }
-            }
-
-            // 添加新队伍
-            document.getElementById('addTeamBtn').addEventListener('click', function() {
-                const teamColors = ["#dc3545", "#0d6efd", "#198754", "#fd7e14", "#6f42c1", "#20c997", "#e83e8c", "#6c757d", "#17a2b8", "#ffc107"];
-                const newTeam = {
-                    id: nextTeamId++,
-                    name: `新队伍${teams.length + 1}`,
-                    color: teamColors[teams.length % teamColors.length],
-                    members: []
-                };
-                teams.push(newTeam);
-                renderTeams();
-            });
-
-            // 移除队伍
-            window.removeTeam = function(teamId) {
-                if (teams.length <= 1) {
-                    alert('至少需要保留一支队伍！');
-                    return;
-                }
-                
-                if (confirm('确定要移除这支队伍吗？队伍中的所有选手将回到选手池。')) {
-                    const teamIndex = teams.findIndex(t => t.id === teamId);
-                    if (teamIndex !== -1) {
-                        // 将队伍中的选手放回选手池
-                        const team = teams[teamIndex];
-                        team.members.forEach(member => {
-                            if (playersByPosition[member.position]) {
-                                playersByPosition[member.position].push(member);
-                            }
-                        });
-                        
-                        teams.splice(teamIndex, 1);
-                        renderTeams();
-                        renderPlayerPool();
-                    }
-                }
-            }
-
-            // 一键清空所有队伍
-            document.getElementById('clearAllBtn').addEventListener('click', function() {
-                if (confirm('确定要清空所有队伍的选手吗？所有选手将回到选手池。')) {
-                    teams.forEach(team => {
-                        // 将队伍中的选手放回选手池
-                        team.members.forEach(member => {
-                            if (playersByPosition[member.position]) {
-                                playersByPosition[member.position].push(member);
-                            }
-                        });
-                        team.members = [];
-                    });
-                    renderTeams();
-                    renderPlayerPool();
-                }
-            });
-
-            // 导出数据
-            document.getElementById('exportBtn').addEventListener('click', function() {
-                const data = {
-                    teams: teams,
-                    playersByPosition: playersByPosition,
-                    nextPlayerId: nextPlayerId,
-                    nextTeamId: nextTeamId,
-                    exportTime: new Date().toISOString()
-                };
-                
-                const dataStr = JSON.stringify(data, null, 2);
-                const dataBlob = new Blob([dataStr], { type: 'application/json' });
-                
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(dataBlob);
-                link.download = `队伍选人系统_${new Date().toISOString().split('T')[0]}.json`;
-                link.click();
-                
-                URL.revokeObjectURL(link.href);
-            });
-
-            // 导入数据
-            document.getElementById('importBtn').addEventListener('click', function() {
-                document.getElementById('importFile').click();
-            });
-
-            // 处理文件导入
-            document.getElementById('importFile').addEventListener('change', function(event) {
-                const file = event.target.files[0];
-                if (!file) return;
-                
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    try {
-                        const data = JSON.parse(e.target.result);
-                        
-                        if (confirm('导入数据将覆盖当前所有数据，确定要继续吗？')) {
-                            teams = data.teams || teams;
-                            playersByPosition = data.playersByPosition || playersByPosition;
-                            nextPlayerId = data.nextPlayerId || nextPlayerId;
-                            nextTeamId = data.nextTeamId || nextTeamId;
-                            
-                            renderTeams();
-                            renderPlayerPool();
-                            alert('数据导入成功！');
-                        }
-                    } catch (error) {
-                        alert('文件格式错误，请选择正确的JSON文件！');
-                        console.error('导入错误:', error);
-                    }
-                };
-                reader.readAsText(file);
-                
-                // 重置文件输入，允许重复选择同一文件
-                event.target.value = '';
-            });
-
-            // 初始化渲染
-            console.log('Starting initial render...');
-            renderTeams();
-            renderPlayerPool();
-            console.log('Initial render completed');
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./../../../../js/team_choose_player_sys.js"></script>
 </body>
 </html>
