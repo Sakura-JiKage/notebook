@@ -16,8 +16,7 @@
         * [HTTP知识](/program/http/HTTP知识.md)
     * HTML
         * [HTML代码模板](/program/html/实例/HTML代码模板.md)
-        * 各种作品
-          * [队伍选人系统](https://sakura-jikage.github.io/notebookhtmlproject/team_choose_player_sys/index.html)
+        * [作品列表](https://sakura-jikage.github.io/notebookhtmlproject/index.html)
     * ORACLE
         * [Oracle常用命令](/program/oracle/Oracle常用命令.md)
         * [Oracle OCP](/program/oracle/Oracle_OCP.md)
